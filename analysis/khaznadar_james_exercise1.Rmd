@@ -1,0 +1,71 @@
+---
+title: "Exercise 1: R Markdown, Automating Tasks, FASTA/FASTQ/String Processing"
+author: "James Khaznadar"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(Biostrings)
+```
+
+## Loading Data
+
+```{r load-data}
+f <- "https://stringdb-static.org/download/protein.sequences.v11.0/9606.protein.sequences.v11.0.fa.gz"
+protein_sequences <- readAAStringSet(f, format = "fasta")
+```
+
+## Question 2
+
+```{r protein-lengths, fig.width=7, fig.height=4}
+protein_count <- length(protein_sequences)
+protein_lengths <- width(protein_sequences)
+protein_names <- names(protein_sequences)
+
+ggplot(data.frame(length = log(protein_lengths)), aes(x = length)) +
+  geom_histogram(bins = 50) +
+  labs(x = "Log Protein length (aa)", y = "Count",
+       title = "Distribution of human protein lengths",
+       subtitle = paste(protein_count, "proteins from STRING-db v11.0"))
+
+protein_names_cleaned <- str_split(protein_names, '9606\\.')
+protein_names_final <- sapply(protein_names_cleaned, `[`, 2) #sapply takes a function, in this case '[' which is analogous to [] in python, puts in the argument 2 ([2]) and then returns a vector instead of a list <- since im building a dataframe a vector is better to work with than a list
+
+number_of_prolines <- as.vector(letterFrequency(protein_sequences, "P"))
+
+final_dataframe <- data.frame(protein_names_final,protein_lengths,number_of_prolines)
+
+write.table(final_dataframe, "../output/human_protein_lengths.txt",
+            sep = "\t", row.names = FALSE, quote = FALSE) #row_names = FALSE avoids extra column of row numbers, quote = FALSE means you dont add quotes
+
+
+```
+
+## Question 3 — DNA String Cleaning
+
+```{r dna-clean}
+dna <- "aACTa TtCcC acCtc\tcaTCC CGGCc\nTaTaT CTGaa"
+
+# your code here
+```
+
+## Question 4 — CPM and Gene Counting
+
+```{r cpm}
+fs <- list.files("../data/files_for_ex1", ".count$", full.names = TRUE)
+
+
+
+my_function <- function(filepath) {
+  file <- read.table(filepath)
+  sum_counts <- sum(file[, 2])
+  CPM = 1e6 * (file[,2] / sum_counts) 
+  CPM_greater_1 = sum(CPM > 5)
+  return(CPM_greater_1)
+}
+
+sapply(fs, my_function)
+```
