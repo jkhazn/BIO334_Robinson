@@ -9,12 +9,13 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(Biostrings)
+library(here)
 ```
 
 ## Loading Data
 
 ```{r load-data}
-f <- "https://stringdb-static.org/download/protein.sequences.v11.0/9606.protein.sequences.v11.0.fa.gz"
+f <- here("data", "human_proteome.fa.gz")
 protein_sequences <- readAAStringSet(f, format = "fasta")
 ```
 
@@ -38,7 +39,7 @@ number_of_prolines <- as.vector(letterFrequency(protein_sequences, "P"))
 
 final_dataframe <- data.frame(protein_names_final,protein_lengths,number_of_prolines)
 
-write.table(final_dataframe, "../output/human_protein_lengths.txt",
+write.table(final_dataframe, here("output", "human_protein_lengths.txt"),
             sep = "\t", row.names = FALSE, quote = FALSE) #row_names = FALSE avoids extra column of row numbers, quote = FALSE means you dont add quotes
 
 
@@ -48,14 +49,15 @@ write.table(final_dataframe, "../output/human_protein_lengths.txt",
 
 ```{r dna-clean}
 dna <- "aACTa TtCcC acCtc\tcaTCC CGGCc\nTaTaT CTGaa"
-
-# your code here
+dna <- str_to_upper(dna)
+dna <- str_replace_all(dna, "\\s", "\n") #\s regex for whitespace
+cat(dna)
 ```
 
 ## Question 4 — CPM and Gene Counting
 
 ```{r cpm}
-fs <- list.files("../data/files_for_ex1", ".count$", full.names = TRUE)
+fs <- list.files(here("data", "files_for_ex1"), ".count$", full.names = TRUE)
 
 
 
@@ -63,7 +65,7 @@ my_function <- function(filepath) {
   file <- read.table(filepath)
   sum_counts <- sum(file[, 2])
   CPM = 1e6 * (file[,2] / sum_counts) 
-  CPM_greater_1 = sum(CPM > 5)
+  CPM_greater_1 = sum(CPM > 1)
   return(CPM_greater_1)
 }
 
