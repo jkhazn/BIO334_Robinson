@@ -1,0 +1,86 @@
+---
+title: "Shimizu Block — May 20, 21, 22"
+site: workflowr::wflow_site
+output:
+  workflowr::wflow_html:
+    toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library(reticulate)
+```
+
+Nucleotide diversity, GFF annotation analysis, and Tajima's D using
+*Arabidopsis thaliana* data (module by Masaomi Hatakeyama).
+
+## GFF Annotation Analysis
+
+Parses the TAIR10 chromosome 1 GFF file to compute genome length, exon coverage,
+and gene region coverage (`bio334_2026/data/Athaliana_SNPs/gff_length_summary.py`).
+
+```{python gff-summary}
+# gff_length_summary.py
+
+def parse_gff(filepath):
+    genome_length = 0
+    exon_intervals = []
+    gene_intervals = []
+
+    with open(filepath) as f:
+        for line in f:
+            if line.startswith("#") or not line.strip():
+                continue  # Skip comment lines or empty lines
+
+            fields = line.strip().split('\t')
+            if len(fields) < 5:
+                continue  # Skip malformed lines
+
+            feature_type = fields[2]
+            start = int(fields[3])
+            end = int(fields[4])
+
+            if feature_type == "chromosome":
+                # Get genome length from the 'chromosome' feature
+                genome_length = end - start + 1
+            elif feature_type == "exon":
+                # Store exon start and end positions
+                exon_intervals.append((start, end))
+            elif feature_type == "gene":
+                # Store gene region (includes exons and introns)
+                gene_intervals.append((start, end))
+
+    # Merge overlapping intervals
+    def merge_intervals(intervals):
+        intervals.sort()
+        merged = []
+        for start, end in intervals:
+            if not merged or start > merged[-1][1]:
+                merged.append([start, end])
+            else:
+                merged[-1][1] = max(merged[-1][1], end)
+        return merged
+
+    merged_exons = merge_intervals(exon_intervals)
+    merged_genes = merge_intervals(gene_intervals)
+
+    # Calculate total lengths
+    exon_total_length = sum(end - start + 1 for start, end in merged_exons)
+    gene_total_length = sum(end - start + 1 for start, end in merged_genes)
+
+    return genome_length, exon_total_length, gene_total_length
+
+# Run the parser and print results
+gff_file = "/Users/jameskhaznadar/Desktop/bio334_python/bio334_2026/data/Athaliana_SNPs/TAIR10_chr1.gff"
+genome_len, exon_len, gene_len = parse_gff(gff_file)
+
+exon_ratio = exon_len / genome_len if genome_len > 0 else 0
+gene_ratio = gene_len / genome_len if genome_len > 0 else 0
+
+print(f"# Genome length: {genome_len}")
+print(f"# Total exon length (merged): {exon_len}")
+print(f"# Exon coverage ratio: {exon_ratio:.4f} ({exon_ratio*100:.2f}%)")
+print(f"# Total gene region length (merged): {gene_len}")
+print(f"# Gene coverage ratio: {gene_ratio:.4f} ({gene_ratio*100:.2f}%)")
+```

@@ -1,0 +1,292 @@
+---
+title: "Wagner Block — May 13, 15, 19"
+site: workflowr::wflow_site
+output:
+  workflowr::wflow_html:
+    toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library(reticulate)
+```
+
+Fitness landscape analysis of the DHFR (dihydrofolate reductase) protein using
+6-residue sequence space, igraph, numpy, scipy, and matplotlib
+(`Wagner/Excersize1.py`).
+
+## Data Loading
+
+```{python data-load}
+import numpy as np
+import igraph as ig
+import random
+import scipy.stats as stats
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+
+with open('/Users/jameskhaznadar/Desktop/bio334_python/Wagner/data/dhfr_wTMP.txt') as file:
+    dictionary = {}
+    list_of_sequences = []
+    list_of_fitness = []
+    next(file)
+    for line in file.readlines():
+        line_list = (line.strip().split('\t'))
+        dictionary[line_list[0]] = float(line_list[1])
+        list_of_sequences.append(line_list[0])
+        list_of_fitness.append(float(line_list[1]))
+
+
+
+#print((4**6)-len(list_of_fitness)) # There are 48 sequences missing
+mean_fitness = (np.mean(list_of_fitness)) # Mean fitness
+above_average_fitness = [i for i in list_of_fitness if i > mean_fitness]
+#print(len(above_average_fitness)/len(list_of_fitness)*100) # How many have fitness above average
+non_detrimental_effect = [i for i in list_of_fitness if i >= 0]
+#print(len(non_detrimental_effect)/len(list_of_fitness)*100)
+#print(mean_fitness)
+
+
+
+'''plt.hist(list_of_fitness, bins=50)
+plt.title('Histogram showing distribution of Fitness')
+plt.xlabel('Fitness')
+plt.ylabel('Count')
+plt.show()
+'''
+
+#Overall introducing mutations to this specific sequence has a mostly detrimental effect, with only 3.4% of mutations actually increasing fitness.
+```
+
+## Fitness Landscape Graph Construction
+
+Builds a directed igraph where each node is a sequence and edges connect sequences
+differing by exactly one amino acid (Hamming distance = 1).
+
+```{python build-graph}
+graph = ig.Graph(directed=True)
+
+#graph.add_vertices(n=len(list_of_fitness))
+
+#graph.vs['Sequence'] = list_of_sequences
+#graph.vs['Fitness'] = list_of_fitness
+
+
+
+
+edges = []
+
+def hamdist(g1, g2):
+    return sum(c1 != c2 for c1, c2 in zip(g1, g2))
+
+seq_to_node = {}
+
+
+for key,value in dictionary.items():
+    v = graph.add_vertex()
+    v['Sequence'] = key
+    v['Fitness'] = value
+    seq_to_node[key] = v.index
+
+
+
+
+for key1,value1 in dictionary.items():
+    for key2,value2 in dictionary.items():
+        if key1 > key2:
+            if (hamdist(key1,key2)) == 1:
+                edges.append((seq_to_node[key1],seq_to_node[key2]))
+                edges.append((seq_to_node[key2],seq_to_node[key1]))
+
+graph.add_edges(edges)
+
+
+for i in graph.es:
+    source = i.source
+    target = i.target
+    i['FitnessDiff'] = graph.vs[target]['Fitness'] - graph.vs[source]['Fitness']
+
+
+
+
+#Now check whether building the graph worked, for example by printing the DNA sequence of the source and target nodes of the first and last few edges
+
+
+
+'''for e in graph.es[:5]:
+    target = e.target
+    source = e.source
+    fitnessdiff = e['FitnessDiff']
+    start = graph.vs[source]['Sequence']
+    end = graph.vs[target]['Sequence']
+
+    print(start + ' -> ',end,fitnessdiff)
+'''
+print(len(graph.vs))
+print(len(list_of_sequences))
+print(len(graph.es))
+
+
+
+
+'''
+plt.hist(, bins=50)
+plt.title('Histogram showing distribution of node degrees')
+plt.xlabel('Degrees')
+plt.ylabel('Count')
+plt.show()
+
+'''
+
+#out_degree = np.array(graph.degree(mode='out'))
+#print((out_degree<18).sum()/72112)
+
+
+
+'''plt.hist(graph.es["FitnessDiff"], bins=50)
+plt.title('Histogram showing distribution of node degrees')
+plt.xlabel('Degrees')
+plt.ylabel('Count')
+plt.show()
+'''
+```
+
+## Peak Detection
+
+A peak is a node with no out-neighbour of equal or higher fitness (a local maximum
+in the fitness landscape).
+
+```{python peaks}
+'''
+peak_dic = {}
+
+peaks = 0
+for v in graph.vs:
+    index_list = graph.neighborhood(v,  mode = "out", order = 1, mindist = 1)
+    #print(index_list)
+    source_fitness = v['Fitness']
+    higher_value = False
+    if higher_value == False:
+        for i in index_list:
+            if graph.vs[i]['Fitness'] >= source_fitness:
+                print(source_fitness,graph.vs[i]['Fitness'])
+                break
+            if i == index_list[-1]:
+                peak_dic[v['Sequence']] = v['Fitness']
+
+
+print(peak_dic)'''
+
+
+
+def find_peaks(graph):
+    peak_dic = {}
+    for v in graph.vs:
+        index_list = graph.neighborhood(v, mode='out', order=1, mindist=1)
+        source_fitness = v['Fitness']
+        is_peak = not any(graph.vs[i]['Fitness'] >= source_fitness for i in index_list)
+        if is_peak:
+            peak_dic[v['Sequence']] = source_fitness
+    return peak_dic
+
+peak_dic = find_peaks(graph)
+```
+
+## Pairwise Hamming Distances — Peaks vs Random Sample
+
+```{python hamming}
+'''
+
+peak_values = [i for i in peak_dic.values()]
+
+print((np.array(peak_values)>0).sum())
+
+
+plt.hist(peak_values, bins=50)
+plt.title('Histogram showing distribution of node degrees')
+plt.xlabel('Degrees')
+plt.ylabel('Count')
+plt.show()'''
+lst_hamdist = []
+for key, value in peak_dic.items():
+    for key2, value2 in peak_dic.items():
+        if key > key2:
+            lst_hamdist.append(hamdist(key, key2))
+
+peak_ham = lst_hamdist
+
+ransample = random.sample(list_of_sequences, len(peak_dic.keys()))
+
+lst_ran_ham = []
+for key in ransample:
+    for key2 in ransample:
+        if key > key2:
+            lst_ran_ham.append(hamdist(key, key2))
+
+print(len(peak_ham), len(lst_ran_ham))  # both should be 4656
+'''
+plt.hist(peak_ham, bins=range(1, 8), alpha=0.5, label='Peaks', color='red')
+plt.hist(lst_ran_ham, bins=range(1, 8), alpha=0.5, label='Random sample', color='blue')
+plt.title('Pairwise Hamming distance: peaks vs random sample')
+plt.xlabel('Hamming distance')
+plt.ylabel('Count')
+plt.legend()
+#plt.show()'''
+
+#import scipy.stats as st
+#stat, p = st.mannwhitneyu(peak_ham, lst_ran_ham)
+
+#print(stat,p,np.mean(peak_ham), np.mean(lst_ran_ham))
+```
+
+## Random Walk Simulation
+
+Greedy uphill random walk from low-fitness starting points; repeated 1000 times.
+Set `eval=TRUE` to render (takes ~60 s and prints one line per walk).
+
+```{python random-walk, eval=FALSE, results='hide'}
+F10 = min(list_of_fitness) + (max(list_of_fitness) - min(list_of_fitness)) * 0.1
+lowest_fitnesses = [seq for seq, fit in dictionary.items() if fit < F10]
+
+#random.seed(10)
+lowest_fitnesses_random = random.sample(lowest_fitnesses, 1).pop()
+
+starting_point = graph.vs.find(Sequence=lowest_fitnesses_random).index
+
+if graph.vs[starting_point]['Sequence'] in peak_dic:
+    print('Dont continue, the randmo walk would start at a point')
+
+stepcount = []
+for i in range(1000):
+    lowest_fitnesses_random = random.sample(lowest_fitnesses, 1).pop()
+
+    starting_point = graph.vs.find(Sequence=lowest_fitnesses_random).index
+
+    steps = 0
+    while True:
+        neighbour_list = graph.neighborhood(starting_point, mode='out', order=1, mindist=1)
+        g_mut = random.sample(neighbour_list, k=1).pop()
+
+        fitness_start = graph.vs[starting_point]['Fitness']
+        fitness_end = graph.vs[g_mut]['Fitness']
+
+        if fitness_end > fitness_start:
+            starting_point = g_mut
+            steps += 1
+            if graph.vs[starting_point]['Sequence'] in peak_dic:
+                break
+    stepcount.append(steps)
+    print(graph.vs[starting_point]['Sequence'], graph.vs[starting_point]['Fitness'], steps)
+
+print(stepcount)
+
+plt.hist(stepcount, bins=50, alpha=0.5, label='Peaks', color='red')
+
+plt.title('Pairwise Hamming distance: peaks vs random sample')
+plt.xlabel('Hamming distance')
+plt.ylabel('Count')
+plt.legend()
+plt.show()
+```

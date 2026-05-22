@@ -1,0 +1,15 @@
+---
+title: "Robinson Block — May 22 onward"
+site: workflowr::wflow_site
+output:
+  workflowr::wflow_html:
+    toc: true
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library(reticulate)
+```
+
+This block begins May 22 (afternoon). Analysis will be added here as work progresses.
