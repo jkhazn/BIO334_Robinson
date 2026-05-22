@@ -72,7 +72,7 @@ def parse_gff(filepath):
     return genome_length, exon_total_length, gene_total_length
 
 # Run the parser and print results
-gff_file = "/Users/jameskhaznadar/Desktop/bio334_python/bio334_2026/data/Athaliana_SNPs/TAIR10_chr1.gff"
+gff_file = "../data/shimizu/TAIR10_chr1.gff"
 genome_len, exon_len, gene_len = parse_gff(gff_file)
 
 exon_ratio = exon_len / genome_len if genome_len > 0 else 0
