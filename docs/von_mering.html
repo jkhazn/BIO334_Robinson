@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>von Mering Block — May 7, 8, 12</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">BIO334_Robinson</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/jkhazn/BIO334_Robinson">
+    <span class="fab fa-github"></span>
+     
+    Source code
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">von Mering Block — May 7, 8, 12</h1>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2026-05-22
+</p>
+<p>
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>BIO334_Robinson/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
+</p>
+<p>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.2). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20260522code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20260522)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20260522code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20260522)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjkhaznBIO334Robinsontree0c324d3f9ae62bba1f344b157c2bb5968ec3702btargetblank0c324d3a">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/jkhazn/BIO334_Robinson/tree/0c324d3f9ae62bba1f344b157c2bb5968ec3702b" target="_blank">0c324d3</a>
+</a>
+</p>
+</div>
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomjkhaznBIO334Robinsontree0c324d3f9ae62bba1f344b157c2bb5968ec3702btargetblank0c324d3a"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version
+<a href="https://github.com/jkhazn/BIO334_Robinson/tree/0c324d3f9ae62bba1f344b157c2bb5968ec3702b" target="_blank">0c324d3</a>.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rproj.user/
+
+Unstaged changes:
+    Modified:   .Rprofile
+    Modified:   BIO334_Robinson.Rproj
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+<p>
+These are the previous versions of the repository in which changes were
+made to the R Markdown (<code>analysis/von_mering.Rmd</code>) and HTML
+(<code>docs/von_mering.html</code>) files. If you’ve configured a remote
+Git repository (see <code>?wflow_git_remote</code>), click on the
+hyperlinks in the table below to view the files as they were in that
+past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/0c324d3f9ae62bba1f344b157c2bb5968ec3702b/analysis/von_mering.Rmd" target="_blank">0c324d3</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-22
+</td>
+<td>
+Add four professor block analyses
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="day-1-python-basics" class="section level2">
+<h2>Day 1 — Python Basics</h2>
+<p>List comprehensions, DNA string cleaning, and a from-scratch k-means
+implementation (<code>Week1/python1practice.py</code>).</p>
+<pre class="python"><code>sq_interval = [i**2 for i in range(21)]
+#print(sq_interval)
+import numpy as np
+import math
+
+even_sq_interval = [i**2 for i in range(21) if i % 2 == 0]
+#print(even_sq_interval)
+
+some_dna = &quot;aACTa TtCcC acCtc\tcaTCC CGGCc\nTaTaT CTGaa&quot;
+
+some_dna_clean = some_dna.replace(&#39;\t&#39;,&#39;&#39;).replace(&#39;\n&#39;,&#39;&#39;).upper()
+
+
+some_list = some_dna_clean.split(&#39; &#39;)
+#print(some_list)
+
+string = &#39;&#39;
+for i in some_list:
+    string += i + &#39;\n&#39;
+
+#print(string)
+
+def count_nucleotides(filename):
+    #print(filename)
+    my_file = open((filename),&#39;r&#39;)
+    text = my_file.readlines()
+    print(text)
+    strings = &#39;&#39;
+    for i in range(len(text)-1):
+        strings += text[i].strip(&#39;\n&#39;)
+    print(strings)
+
+    nucleotide_dic = {&#39;A&#39;:0,&#39;T&#39;:0,&#39;C&#39;:0,&#39;G&#39;:0}
+    for i in strings:
+        nucleotide_dic[i] += 1
+    print(nucleotide_dic)
+
+    for key in nucleotide_dic:
+        print(&#39;Count of &#39;+key+&#39;: &#39;+str(nucleotide_dic[key]))
+
+
+#count_nucleotides(&#39;/Users/jameskhaznadar/Desktop/bio334_python/Week1/strange_dna.txt&#39;)
+
+
+data = np.genfromtxt(&#39;/Users/jameskhaznadar/Desktop/bio334_python/Week1/data.csv&#39;, delimiter=&#39;,&#39;)
+
+def create_initial_centroids(data, k):
+    np.random.seed(5)
+    centroids = np.zeros((k, 2))
+    centroids[:, 0] = np.random.uniform(np.min(data[:, 0]),np.max(data[:,0]),size=k)
+    centroids[:, 1] = np.random.uniform(np.min(data[:, 1]),np.max(data[:,1]),size=k)
+    return centroids
+
+centroids = (create_initial_centroids(data,k=3))
+
+def find_distance(p,c):
+    return math.sqrt((p[0]-c[0])**2 + (p[1]-c[1])**2)
+
+#for i in centroids:
+    #print(i[0],i[1])
+
+
+
+from collections import defaultdict
+import matplotlib.pyplot as plt
+def k_means(data, k=3, n=10):
+    centroids = create_initial_centroids(data, k=k)
+   #print(centroids)
+
+    for iteration in range(n):
+        centroid_dic = defaultdict(list)
+        for i in data:
+            closest = float(&#39;inf&#39;)
+            closest_var = centroids[0]
+
+            for j in centroids:
+                d = find_distance(i, j)
+                if d &lt; closest:
+                    closest = d
+                    closest_var = j
+            centroid_dic[str(closest_var)].append(i)
+        new_centroids = []
+        for key in centroid_dic:
+            count = 0
+            x = 0
+            y = 0
+            for value in centroid_dic[key]:
+                x += value[0]
+                y += value[1]
+                count += 1
+            if count &gt; 0:
+                new_centroid = np.array([x/count, y/count])
+                new_centroids.append(new_centroid)
+
+        centroids = np.array(new_centroids)
+    return centroids, centroid_dic
+
+
+centroids, centroid_dic = k_means(data, k=5, n=10)
+
+plt.figure(figsize=(8, 6))
+
+for key in centroid_dic:
+    cluster_points = np.array(centroid_dic[key])
+    plt.scatter(cluster_points[:, 0], cluster_points[:, 1], s=10, alpha=0.6)
+
+plt.scatter(centroids[:, 0], centroids[:, 1],
+            s=200, color=&#39;red&#39;, marker=&#39;X&#39;,
+            edgecolor=&#39;black&#39;, linewidth=1.5,
+            label=&#39;centroids&#39;, zorder=5)
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.show()</code></pre>
+<p><img src="figure/von_mering.Rmd/day1-basics-1.png" style="display: block; margin: auto;" /></p>
+</div>
+<div id="day-2-multiple-sequence-alignment" class="section level2">
+<h2>Day 2 — Multiple Sequence Alignment</h2>
+<p>Exercises from May 8 using the MFS domain dataset
+(<code>Week1/exercises/CutDomain.py</code>).</p>
+<div id="parsing-fasta-sequences" class="section level3">
+<h3>Parsing FASTA Sequences</h3>
+<pre class="python"><code>import csv
+def seq_to_dic(filename):
+    my_file = open(filename)
+    dictionary = {}
+    # CHANGED: removed `for line in my_file:` — it was consuming the first
+    # header line before .read() ran, which dropped the first protein.
+    reads = my_file.read()
+    entries = reads.split(&#39;&gt;&#39;)
+    for entry in entries:
+        if not entry.strip():        # ADDED: skip the empty piece before the first &#39;&gt;&#39;
+            continue
+        sequence = entry.split(&#39;\n&#39;)[1:]
+        text = &#39;&#39;.join(sequence)
+        dictionary[&#39;&gt;&#39;+(entry.split(&#39;\n&#39;)[0].split(&#39; &#39;)[0])] = text
+    return dictionary
+
+
+
+mfs_domain_proteins = seq_to_dic(&#39;/Users/jameskhaznadar/Desktop/bio334_python/Week1/exercises/mfs_domain_proteins.fa&#39;)</code></pre>
+</div>
+<div id="extracting-hmmer-domain-coordinates" class="section level3">
+<h3>Extracting HMMER Domain Coordinates</h3>
+<pre class="python"><code>def get_coords(filename):
+    lists = []
+    with open(filename) as fd:
+        for line in fd:
+            if line.startswith(&#39;#&#39;) or not line.strip():
+                continue                          # skip header/comment/blank lines
+            cols = line.split()
+            significance = cols[11]
+            if float(significance) &lt; 0.05:
+                name     = cols[0]
+                env_from = int(cols[19])              # CHANGED: 17 -&gt; 19 (env coord from)
+                env_to   = int(cols[20])              # CHANGED: 18 -&gt; 20 (env coord to)
+                lists.append([&#39;&gt;&#39;+name, env_from, env_to])
+    return(lists)
+
+coordinated = (get_coords(&quot;/Users/jameskhaznadar/Desktop/bio334_python/Week1/exercises/domains_found.tsv&quot;))
+#print(coordinated)
+&#39;&#39;&#39;for item in coordinated:
+    name = item[0]
+    start = item[1]
+    end = item[2]
+
+    sequence = mfs_domain_proteins[name]
+    print(name + &#39;\n&#39;, sequence[start: end])      # CHANGED: start-1 to fix off-by-one (HMMER is 1-indexed inclusive)
+
+&#39;&#39;&#39;</code></pre>
+<pre><code>&quot;for item in coordinated:\n    name = item[0]\n    start = item[1]\n    end = item[2]\n\n    sequence = mfs_domain_proteins[name]\n    print(name + &#39;\n&#39;, sequence[start: end])      # CHANGED: start-1 to fix off-by-one (HMMER is 1-indexed inclusive)\n\n&quot;</code></pre>
+</div>
+<div id="jaccard-distance-matrix" class="section level3">
+<h3>Jaccard Distance Matrix</h3>
+<pre class="python"><code>def find_jacard(seq1,seq2):
+    seq1 = seq1.strip(&#39;&#39;)
+    seq2 = seq2.strip(&#39;&#39;)
+    matching = 0
+    total = len(seq1) + len(seq2)
+    for i in range(len(seq1)):
+        if seq1[i] == seq2[i]:
+            matching += 2
+    return round(1-(matching/total),2)
+
+sequences = [&#39;GDRVGRKFIIWFSILGTAPFALWLPYAD-ADTTAILVILIGFIISSAFAS&#39;,
+&#39;GDRVGRKFIIWFSILGAAPFALWLPYAD-AQTTAILIVLIGFIISSAFAS&#39;,
+&#39;GDKVGRKYIIWFSVLGVAPFTMLLPYAS-LEWTGILIVIIGLILSSAFPS&#39;,
+&#39;GDRFGRKYVIWFSILGTAPFALMLPYAN-LFWTGVLIVPIGMILASAFSA&#39;,
+&#39;GDRIGRKYVIWGSILGVAPFTLILPYAS-LYWTGILTVIIGFILASAFSA&#39;]
+
+
+
+import numpy as np
+
+all = []
+for i in sequences:
+    row = []
+    for j in sequences:
+        row.append(find_jacard(i,j))
+    all.append(row)
+
+
+
+matrix = np.array(all)
+np.fill_diagonal(matrix, np.inf)
+lowest = (np.min(matrix))
+itemindex = np.where(matrix == lowest)
+print(itemindex)</code></pre>
+<pre><code>(array([0, 1]), array([1, 0]))</code></pre>
+<pre class="python"><code>
+highest_1 = itemindex[1][1]
+highest_2 = itemindex[1][0]</code></pre>
+</div>
+<div id="upgma-clustering" class="section level3">
+<h3>UPGMA Clustering</h3>
+<pre class="python"><code>import numpy as np
+
+all = []
+for i in sequences:
+    row = []
+    for j in sequences:
+        row.append(find_jacard(i,j))
+    all.append(row)
+
+
+
+matrix = np.array(all)
+
+# clusters list — each entry is a list of indices into the original sequences
+clusters = [[0],[1],[2],[3],[4]]
+labels = [[&#39;Q&#39;],[&#39;A&#39;],[&#39;B&#39;],[&#39;C&#39;],[&#39;D&#39;]]
+
+# original distance matrix kept untouched (UPGMA always uses original D)
+D = matrix.copy()
+
+while len(clusters) &gt; 1:
+    # build current matrix from clusters using D
+    n = len(clusters)
+    current = np.zeros((n,n))
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+            total = 0
+            count = 0
+            for a in clusters[i]:
+                for b in clusters[j]:
+                    total += D[a,b]
+                    count += 1
+            current[i,j] = total/count
+
+    # find smallest off-diagonal value
+    masked = current.copy()
+    np.fill_diagonal(masked, np.inf)
+    lowest = np.min(masked)
+    itemindex = np.where(masked == lowest)
+    i = itemindex[0][0]
+    j = itemindex[1][0]
+    if i &gt; j:
+        i, j = j, i
+
+    #print(&#39;Merging&#39;, &#39;&#39;.join(labels[i]), &#39;and&#39;, &#39;&#39;.join(labels[j]), &#39;distance&#39;, lowest, &#39;branch&#39;, lowest/2)
+
+    # merge i and j
+    new_cluster = clusters[i] + clusters[j]
+    new_label = labels[i] + labels[j]
+
+    # rebuild clusters/labels without i and j, then add the new one
+    new_clusters = []
+    new_labels = []
+    for k in range(len(clusters)):
+        if k != i and k != j:
+            new_clusters.append(clusters[k])
+            new_labels.append(labels[k])
+    new_clusters.append(new_cluster)
+    new_labels.append(new_label)
+    clusters = new_clusters
+    labels = new_labels
+
+#print(&#39;Final:&#39;, &#39;&#39;.join(labels[0]))
+print(&#39;Final cluster order:&#39;, &#39;&#39;.join(labels[0]))</code></pre>
+<pre><code>Final cluster order: QABCD</code></pre>
+</div>
+<div id="organism-name-extraction" class="section level3">
+<h3>Organism Name Extraction</h3>
+<pre class="python"><code>import csv
+def seq_to_dic(filename):
+    my_file = open(filename)
+    dictionary = {}
+    # CHANGED: removed `for line in my_file:` — it was consuming the first
+    # header line before .read() ran, which dropped the first protein.
+    reads = my_file.read()
+    entries = reads.split(&#39;&gt;&#39;)
+    for entry in entries:
+        if not entry.strip():        # ADDED: skip the empty piece before the first &#39;&gt;&#39;
+            continue
+
+        sequence = entry.split(&#39;\n&#39;)[0]
+        text = &#39;&#39;.join(sequence)
+        name = (sequence.split(&#39;OS=&#39;)[1].split(&#39;OX=&#39;)[0])
+
+        sequence = entry.split(&#39;\n&#39;)[1:]
+        text = &#39;&#39;.join(sequence)
+        print(&#39;&gt;&#39;+ name + &#39;\n&#39; + text)
+
+
+
+mfs_domain_proteins = seq_to_dic(&#39;/Users/jameskhaznadar/Desktop/bio334_python/Week1/exercises/mfs_domain_proteins.fa&#39;)</code></pre>
+<pre><code>&gt;Fusobacterium necrophorum subsp. funduliforme B35 
+MLLTQRKFLPLFLTQFLGALNDNLLKMAIITFITYHLQGSLTEKGILISSVNVITILPMFFISATAGQFADKFQRNSLVKIIKGIEILGIFFCIFFFYSGQYSLILLTLFVMSTRSAFFGPLKYSILPQHLKEAELISANAFVDTSTYLAVLFGTILGTYLHSPIFVLGFLFSSAVIGFISSFFIPVSPAPRPKAKLHKNILKDIRISYRKVSELKVIYQTILGISWFWSLAAVVMLLIYPLCESVLGTSRNAVSVFMLIFALGISLGAYLCTKILKGVVHPTYVPLSSLGMAVSMFALYWATNRYVPPFENLHTVPFFTSFVGIRMAIILFLLAFFSGMYLVPLNTFLQTRASKKYLATIIAGNNILNACGMVFLSVFVMLLFHLGVSIPQIFFFLSLVSILVAFYILTMLPDALPRSIAQSLLAIFFKVDVKGLEYFEKAGKRVLLIANHTSLLDGLLVAAFMPERLIFAINTHIAKKWWVKIFRPVVSLHPLDPTNPVALKNIIDELKKNQKCIIFPEGRITVTGSLMKVYEGAGVVANAANANILPVRIDGAQFSKFSYLKTKFKTTYFPKITITVLPPTKIKVEEGVSPSLRRKQIGDQLYTIMTNMMYQSSPIATPLFRALLTARKRHGKGHMIAEDIARRSISYYQLILKSYILGRYFEEKIPEKNVALLLPNSLANVVAYFALQSVGKVPAMVNFTQGEAQILSCLHTSGIQTLITAEKMVTLMELQAVIQKIEEAGIRVFYLEQVQEALSYRQKWIGVYRYYRRYTPKVDSSDIATILFTSGSEGTPKAVALNHENLQANRYQISSVFAFNESDVFFNMLPMFHSFGLEVGTILPILSGIKVFFYPSPVHYKIVPELVYDSNASILCGTDTFFQGYAKQANPYDFYNIKYAIVGAEKLKDTTSQIWMEKFGVRILEGYGITETSPVLAVNTPMYQKKNSVGKLVPGIQYRLEEVEGVAEGGRLFVKGRNIMKGYLKNGELESLPDGWYDTGDIVSIDEDGFVHILGRAKRFAKIGGEMVSLAAVEEVLQKKYPDIKLAVLSVQDPKKGEQLVLFTEAEQMDSKDILEYLKEEQYSELWIPKKILTKQEIPILGTGKTDYVKLREMLDTE
+&gt;Shinella sp. DD12 
+MQQNLMTSRRFAPLFWTQFLSAFNDNFLKNTLVFLILATVAAEEAGSLVTLAGAVFMAPFLLFSALGGELADKFDKAVMAERLKRVELAAAGVAVVGLAFHSITVLMAALFLFGVISALFGPVKYGILPDHLERKELPRANAWIEGATFIAILGGTLVAGLAAADGVNPWLFGPMMLGLALACWLSSRYIPRVGAKAPDLSVDRNVLRSTGRLVNALRGDKRLWRSALMASWFWLVGAIVLSLLPPMVKGSLGGDETAITAYLAVFAVAVGIGSAIAAWMSAGRIVLLPAPIGTLIMAVFGLDLAWSVGHAGVAAPAESLSAFFAGPYTIRIAIDLAGMAIAGAFLVVPTFAALQAWAEEEQRSRVIGAANVLSAGFMTVGGGLVAALQAAGTSTPLLLAGLAIANIVAAWVMLKTLPTNAFRDFVSILFRAFLRLEVDGLDNLKKAGKAPIIALNHVSFLDGALALALTDEEPTFAVDYTIAKAWWVKPFLKMCNFLPLDPSKPMATRTLIKTVNNGEPLVIFPEGRITVTGALMKVYDGAAMVADKTGAMVVPVRIDGLEKSYFSRLSSLHVRRRLFPKVKVTILPPVRLTVPAELKGRKRRMAAGAELYQIMSMLMFSTTDTSTTVLEKVIESAEERGMRRLAVQDPVTGSLTYGKLLTGAAVLGAKFRALYPEDRTLGVLLPNANGSVATLLGVMSAGKVPAMLNFTAGSANILSACKAAEVRRVLTSRAFITQAKLGPVVEELAKTLEIVWLDDLRQTIGFADKLRGLLRKGRPLVKRKADDPAVILFTSGSEGAPKGVVLTHRNILSNAAQAASRIDFHSGDKVFNILPVFHSFGLTAGTILPLVSGVPVYFYPSPLHYRIIPELIYSSNATIIFGTDTFLNGYARTAHPYDFRSIRYCFAGAEPVRATTRALYMEKFGVRILEGYGVTEAAPVIALNTPMFNKAGSVGKIMPGMEYRLDPVPGVDVGGRLFVRGANVMSGYLRAENPGVLEPTPDGWHDTGDIVTVDEDGFITIRGRAKRFAKIGGEMVSLAAVEALASELWSGKLSVVVSLPDAKKGERLVLLTDAPDATRAAFLRFAKEKGAMDMMVPSEVKVGTVPVLGSGKVDFVSAQKLLAEQARAEVAA
+&gt;Bradyrhizobium japonicum SEMIA 5079 
+MIRELMSSRRFAPLFWAQFFSALNDNVLKNALVIILLYSAATGHGDALVTVAGAVFIFPYFILSGLGGQLADKYVKSVVARRLKFVEIFAAGFAAAGFFLHSVPLLFTALALFGTIAALFGPVKYAMLPDQLELGELATGNALVEGATFMAILLGTVAGGQFVAGSAHMGWVASAVVVLALLSWAFASRIPQTTPSAPDLPVNANPWTSTLGLLKTLYADKRLWDGTVIVSWFWLVGAIVLSLLPALVKEAVGGTEGVVTLCLATFAIGIAIGSLFAASLSHVRPNLALVPIGAIIMGFAGLDLAWAIGVTAKGQDIAAVDFATSFAGLRMLIDFVAFAFGGGLFVVPSFAAVQAWSAPSERARIIAAGNVLQAAFMVVGSLFVALLQAGGLHVGWIFFGLGVASFGAVWFVLTKWGKEGVRDFGGLLFRALFRTEIRGLENLPPPGTRMLIAPNHVSLIDGPLLHAVLPIDASFAVDTGISKAWWAKPFLRVVKHYTMDPTKPLAARDLIKLVAAGEPVVIFPEGRITVSGSLMKVYDGTAMIADKADAVVVPVRIEGAQRSHLSYLNSSQIKRSWFPRVTVTILPPVKLPVDPALKGKARRNAAGAALQDVMIDAMVKNAMLDHTLFEALGHAYRDRDTGKVIIEDALGTKLTYRKLILGAQVLSRKLETGTVAGENVGVLLPNSAGVAVVFMALQSIGRVPAMLNFSAGPVNVLAAMKAAQVKTVLTSKAFIEKGKLDKLMAAISAEARVVYLEDVRATIGTADKIKGLLAGTAPRVAREANDPAVVLFTSGSEGTPKGVVLSHRNILANAAQALARVDANANDKVFNVLPVFHSFGLTGGMMMPLLAGIPIYMYPSPLHYRIVPELIYQTGATILFGTDTFLTGYARSAHAYDFRTLRLVIAGAEAVKDRTRQVFMERYGIRILEGYGVTETAPVLAMNTPMANRPGTVGRLSPLMESRLDPVPGIEEGGRLSVRGPNVMLGYLRAENPGVLEPLAEGWHDTGDIVAIDPAGFITIKGRAKRFAKIAGEMVSLSAVESIATALWPQAASVAVSIPDQRKGERIVLLTTEKTAERSAMQGQAKAIGASELTVPAAIMVVDKVPLLGTGKTDYVTATTMAREQASSPEREVA
+&gt;Campylobacter jejuni K5 
+MQKNSFLKIYGLIPFLLVAFINAFVDLGHKIIIQNTIYKVYEGSTQLLLTAIVNALILLPFILMLSPSGFLADKYPKNLIMKLSAAFSVMLTIIICISYYNGAFWTAFTLTFIMGIQAALYSPSKYGFIKELVGKDLLAMGNGAVNAVSIVAILAGMSLFSLSFESLYDINHNSSEEVLKQVAPLGFLLILFSLIELYLAWRLPKLKDEIKELKFDSKRYLSGKLLMSNLKLIFENKVIWLCIVGISIFWAISQLYLVSFPVFSKNELFIENTFFVQVSLGFSGIGVVLGSLIAGRFSKNYIELGLIPFGALGVFLMALIMPYFTSLITYSFIFFIFGFCGALFIIPLNSLIQFHAKENELGKILAGNNFIQNIAMLTFLVLATLFANLEINVIYLFYFITLVAFLGAIYVVFKLPFSLVRMLLSIAFLGRYRLLVEGFKNIPEKGGALLLGNHISFIDWAIVQMAIPRKIYFVMERSIYSKWYIKIFLDKFGVIPVSSAASKASLELIAERIKQGDLVCLFPEGVLSRHGQLNEFKGGFEHVCSNLEEDDGVILPFYIRGLWGSTFSRSDEEFSARNRTLSKRNIAIAFGAPMSLHSKKEEVKAKVFELSFMAWKSQCEAMHTIARAFITSAKRNLSNIAIIDSLAGAISYRKLLSLSFILSTLIKENSKKINSNFERGSYAPKEECVGILLPASFASSLLNLSVLLAQKVVVNLNFTAGEKALQAAVKSAQISQIYTSKKFLEKLESKGVSLNFGEEVNLIYMEDVVEIFKKQKSKILAMMMAVSILPSFILKAIFAPSKNNLAIAAILFSSGSEGTPKGVMLNNRNILSNIAQISDVLCTRNNDVILSSLPPFHAFGLTVTTFLPLLESIKSITFADPTDALGIAKAVAKNNVTIMCGTSTFLGIYARNKKLDAIMFESLRVVVSGAEKLKSEVRSAFEMKFKKSIFEGYGATETTPVASVNLPNRFDADYWIVHRASKEGSVGMPLPGTAVRIVDPNTYETLKTNEDGLILIGGHQVMVGYLNNKEKTDEVIKEIDGIRWYNTGDKGHLDEDGFLYIVDRYSRFAKIGGEMISLGALEEEIAKFIDTNIVKFCTVALEDEKKGEQVALLIECDEEFFEGVCEAIKSSSMPAIFKPSRYLKVEKIPLLGSGKVDLKGAKELAKSLV
+&gt;Halomonas campaniensis 
+MQPLLRITGVWPYLIAIFLNAFVDLGHKIVIQNTIFKSYDGETQVVLTALVNGLILLPFILLFSPAGHVADSYPKVRILRGSAWAAVAVSLGITAAYYQGWFWLAFAMTLVLAIQSAFYSPAKYGLVKGLFGKPRLAEANGLIQAVTIGAILAGTVAFTALFESWILPSAQTPGELLRSIAPLGWLLVLNSVIQVMALYRLKPDNAQPSTTPLTWQRYIKGSALKDNLSILGRQPVLRLSIIGLATFWSVGQVLLAAFPAYAKDALSIDNTLVLQGILAASGIGIALGSLLASKLSRNRIETGLIPLGAVGVAVGLWCLPLLTTPISQALNFVFIGMMGGLFIVPLNALIQFHAADHELGTVLAANNWIQNLSMLGFLALTALFALAGVDSHYLLLLVATVAMVGGGYTIFKLPQSLVRFLLSFLLTRRYRVDVHGLEHLPAQGGVLLLGNHISWVDWAMVQIACPRPVRFVMLKDIYQRWYLRWFFKALGCIPIERGAGADNALAAVAEQLNNGEVVCLFPEGAISRNGQLGELRRGYERACKLANPEVRIVPFYLRGLWGSQFSRSSSKLKELRNAPLHRSVVVAFGKPLPKDTPADVLKRRIFEQATNSWQHAIDELPSLPDAWIRSVKRNLGAQALTDTLSHPLTAGQALTASLLIAKRIHTLTPGQNVGLLLPNSSVGALANMATLLAGKTLVNLNYHFDDSPSGTAKEDTFSAALAQANIDTVFTSRHFVEKLQQQGLNISQRLANIKTIYLEDLQASIRRHERVSTWLAVRLLPTWLLQRLYCRSRDANATAAIVFPSTSEGQPKGVMLSHRNLMANIKQTSDVLNTQYDDVVIGSLPLFHAFGLTVTQLLPLIEGLPLVCHADPNDTAGIASSVAKHKATLMFGTSDFLQHLNHSPKVHPLMLESLRAVVVSAETLDEQVCSDFVLKFHKPIYKGYGATETAPVASVNLPDSLGAHYQTIQQGSKAGTVGMPLPGTSFKIVEPESFAEQPSGEAGMILISGPQVMQGYLNDSKRTAAAIKELDGQRWFITDDKGFIDEDGFLTLIGRHA
+&gt;Azospirillum brasilense 
+MGELGLLATRRFLPLFVTQFLGAFGDNVLRGAIAVLAVYGMAGTAGDGALISTLAAAAFTVPFLLFSATAGQLADRFDRTLIARAVKVAEIGLMTIAAWGILRADLGVLVVALVGMGAHSTVFGPVKYGLLPDLLKPEELTAGNGLVEAGTFVAILLGTIAGGSLALAHPLALPGLLGATALGGLAASLLIPRAGNADRTVRVGLNPVSVTLRVLRATAQDRVSMLAIYGISVFWGVGAVVMAQFPAIARETLGTDSEGATLLLAVFAVGVAVGSVYAGLGHRVPSRADARRAALAGLVAAVAGAALPFLTPDAPSAEPLSALALLAQPWAMPLLADLFLIAAAGGAFAVPLYALIQHRAAASARARVIAAANVVNALFMVVGSGIAAAMLALGVTPLTVAAWGGASMLAAVVLALAIDAVGLGRALARAFFRLAFRVELRGAEHLERLEGAAVVTPNHQSFLDGALLAAFLPGMRFAVDSFIAQQAWAKPFLALADHVTIDPTKPMGTRLLARSLAEGHKICIFPEGRITVTGSLMKINGGPGMLADKAGCPIVPVCIEGAQRSILSRMHGRLRLGLFPRITITVMPPVATPDVTGLAGKKRRAALKSWLSRVMTETVFAAGQRRDTLALALLEAGRKTGWGKAAVQDGDFTTLSYRALTARSLVLGRILARGTEPGEAVGVLLPTASPTAAVFFGLAAYGRPAAMLNFTAGAEAIKAACRAAGLRRIVTSARFVEMGRLGPLVEALAAEHSIVYLEDVKRGLGIGDKLRALAASVAPERFLPEQGEPDDVAAILFTSGSEGPPKGVALTHDNLLANMAQVASVVDFTRQDVVFNCLPVFHSFGLLGGMLLPILNGVKTVLYPNPRHVRLIPELVYQTNATVLFGTDFFLNAWARAADPYDFRSLRLVFAGAERLQEETRRTYTERLRVHLLEGYGTTETSPVIAVNTPARFRPGTVGQALPGIETELLPVPGVPVGGRLRVRGPNVMKGYMRADNPGVVEPPEDGWHDTGDIVDIDADGFIRIVGRVKRFAKVAGEMVPLGLVEELALQAAPDATHAAVSLPDARRGERIVLVTAGASLTRDALAAAAKAKGAPEIAIPRDVLRVETIPLLGTGKTDYPAVSRLAAEMLASETA
+&gt;Rhizobium sp. IE4771 
+MTSRKFAPLFWTQFLTAFNDNFLKNTLVFLILFKMSASEGAALVTLAGVILIVPFLLLSALGGELADKHDKAKIAELLKRCEIGIAALAVVGLGFSSISVLMLALFGFGVVSALFGPIKYGILPDHLDRRDLPKANAWIEGGTFIAILAGTIIAALAFSSGDNVLLFGSMMMGLSLLCWLASRMIPPTGSKAPDLQIDRNVIRSSYRLVMEIREDKRLWRSALMNCWFWLVGAFVLSILPTMVTELLGGSELVVPAYLTVFAIAVAVGSAIAAWMSSGRIVLLPAPVGTALLGLFSLDLAWNLWGLQSTTHATTILDFFAGQNTIRVAIDLAGMAIAGAFIAVPTFAGLQTWAHEDRRARVIGAANVLSALFITVGLGLVAVIQALGASIPQILIGLGILNFAVAWLMLKTLPTNPFRDFISILFRAFMRLEVEGLENIKKAGRAPIIALNHVSLLDGALALAITEEEPTFAVDYKIAQAWWVRPFLKMCKFLPLDPTKPMATRSLIKVVQDGSPIGIFPEGRLTVTGTLMKVYDGAAMVADKTGSMVVPVKIDGLEKSYLSYLDNGKIRRRLFPKVKVTILEPVKLEVPAELKGRKRRTAAGAALYQVMSNLLFQTADTSSTVLTRVIQAAQEFGMKKLAVEDPVTGSLSYGKLLTGAAVLGAKFRARFPEQNLGVMLPNANGAAATILGVMSAGKVPAMLNFTAGAANILSACKAAEVKHVLTSRAFVAQAKLGPVVEELQKQVTIVWLDDLRAEVSALDKIRGLLRKGRPLVKRQPDDPAVILFTSGSESTPKGVVLTHRNILSNAAQAAARIDFHSGDKVFNILPVFHSFGLTAGTVLPLISGVPVYFYPSPLHYRIVPELIYVSNATIIFGTDTFLNGYARTAHPYDFRSIRYIFSGAEPVKASTRNTYMEKFGLRILEGYGVTETAPVISINTPMYNKSGTVGKILPGMEWKLEPVPGIDEGGRLHVRGANVMAGYLRAEKPGVLEPLADGWHDTGDIVTIDEDGFVKIRGRAKRFAKIGGEMISLAAVETLAAELWPGALSVVSSLPDPKKGERLVLLTEAETATRAEFLAFAKSKGAMDMMVPAEVTIGKVPVLGSGKVDFVAARKLAESVAEKGEAA
+&gt;Fusobacterium necrophorum BFTR-2 
+MLLTQRKFLPLFLTQFLGALNDNLLKMAIITFITYHLQKSLTEKGILISSVNVITILPMFFVSATAGQFADKFQRNSLVKIIKGIEIIGIFFCIFFFYSGQYSMILLTLFVMSMRSAFFGPLKYSILPQHLKEAELISANAFIDTSTYLAVLFGTILGTYLHSPIFVLGFLFSSAVIGFISSFFIPVSPAPRPKAKLHKNILKDIRITYRKVSELKVIYQTILGISWFWSLAAVVMLLIYPLCESVLGTSRNAVSVFMLIFALGISLGAYLCTKILKGVVHPTYVPLSSLGMAVSMFALYWATNRYVPPFENLHTVPFFTSFVGIRMAIILFLLAFFSGMYLVPLNTFLQTRASKKYLATIIAGNNILNACGMVFLSVFVMLLFHLGVSIPQIFFFLSLVSILVAFYILTMLPDALPRSIAQSLLAIFFKVDVKGLEYFEKAGKRVLLIANHTSLLDGLLVAAFMPERLIFAINTHIAKKWWVKIFRSVVSLHPLDPTNPVALKNIIDELKKNQKCIIFPEGRITVTGSLMKVYEGAGVVANAANANILPVRIDGAQFSKFSYLKTKFKTTYFPKITITVLPPTKIKVEEGVSPSLRRKQIGDQLYTIMTNMMYQSSPIATPLFRALLTARKRHGKGHMIAEDIARRSISYYQLILKSYILGRYFEEKIPEKNVALLLPNSLANVVAYFALQSVGKVPAMVNFTQGEAQILSCLHTSGIQTLITAEKMVTLMELQAVIQKIEEAGIRVFYLEQVQEALSYRQKWIGVYRYYRRYTPKVDSSDIATILFTSGSEGTPKAVALNHENLQANRYQISSVFAFNESDVFFNMLPMFHSFGLEVGTILPILSGIKVFFYPSPVHYKIVPELVYDSNASILCGTDTFFQGYAKQANPYDFYNIKYAIVGAEKLKDSTSQIWMEKFGVRILEGYGITETSPVLAVNTPMYQKKNSVGKLVPGIQYRLEEVEGVAEGGRLFVKGRNIMKGYLKNGELESLPDGWYDTGDIVSIDEDGFVHILGRAKRFAKIGGEMVSLAAVEEVLQKKYPDIKLAVLSVQDPKKGEQLVLFTEAEQMDSKDILEYLKEEQYSELWIPKKILTKQEIPILGTGKTDYVKLREMLDTE
+&gt;Rhizobium leguminosarum bv. phaseoli CCGM1 
+MTSRKFAPLFWTQFLTAFNDNFLKNTLVFLILFKMSASEGAALVTLAGVILIVPFLLLSALGGELADKHDKAKVAELLKRCEIAIAALAVVGLGFSSISVLMAALFGFGVVSALFGPIKYGILPDHLDRRDLPKANAWIEGGTFIAILAGTIIAALAFSSGDNVLLFGSMMMGLSLLCWLASRMIPPTGSKAPDLEIDRNVIRSSYTLVMEIRADKRLWRSALMNCWFWLVGAFVLSILPTMVTELLGGSELVVPAYLTVFAIAVAVGSGIAAWMSSGRIVLLPAPVGTALLGLFSLDLAWNLWGLQSTTHATTILDFFAGQNTIRVAIDLAGMAIAGAFIAVPTFAALQTWAHEDRRARVIGAANVLSALFITVGLGLVAVIQALGASIPEILIGLGILNFAVAWLMLKTLPTNPFRDFISILFRAFMRLEVEGLENIKKAGRAPIIALNHVSLLDGALALAITEEEPTFAVDYKIAQAWWVRPFLKMCKFLPLDPTKPMATRSLIKVVQDGSPIGIFPEGRLTVTGTLMKVYDGAAMVADKTGSMVVPVKIDGLEKSYLSYLGDGKIRRRLFPKVKVTILEPVKLEVPAELKGRKRRTAAGAALYQVMSNLLFETADTSSTVLGRVIQAAQEFGMKKLAVEDPVTGSLTYGKLLTGAAVLGAKFRARFPEANIGVMLPNANGAAATILGVMSAGKVPAMLNFTAGAANILSACKAAEVKHVLTSRAFVAQAKLGPVVEELQKQVTIVWLNDLRAEVGLVDKLRGLLRKGRPLVKRRPDDPAVILFTSGSEGTPKGVVLTHRNILSNAAQAAARIDFHSGDKVFNILPVFHSFGLTAGTVLPLISGVPVYFYPSPLHYRIVPELIYVSNATIIFGTDTFLNGYARTAHPYDFRSIRYIFSGAEPVKASTRNTYMEKFGLRILEGYGVTETAPVISINTPMYNKSGTVGKILPGMEWKLEPVPGIDEGGRLHVRGANVMAGYLRAEKPGVLEPLADGWHDTGDIVTIDEDGFVKIRGRAKRFAKIGGEMISLAAVETLAAELWPGALSVVSSLPDPKKGERLVLLTEAATATRAEFLAFAKSKGAMDMMVPAEVTIGKVPVLGSGKVDFVAARKLAESVAEKGEAA
+&gt;endosymbiont of Acanthamoeba sp. UWC8 
+MALFVLPFCIFSASGGKLADKFRKSRLIVWLKAINIIVALIAVIGFLTGSYFILLFSIFLTGVEAALFGPVKYSILPEGLKKSELILGNGLIEAATFVAILFGVTFGGLFVSHDSFDVYLICFIILAAAVISYVFALFIPNSTVSDPSIKLSVNLFLETKECITFTRKHRRAFLAILGISWFWLIGSVLISQMSNLTKEVFGGDESVFTLLLAAFSFGTGVGSMLCNKLLKEEITTKYVPTSMMVMSFFFLDLWWTSTIFEKKDYLGGIHYFLSNVDGIRAFIDIFMISVSGGIYIVPLYALLQLEIKKEFRSRAIAASNIMSSFFMVVASSITMALIAIGLSEPQLLFILAVANFFTASYICQILPDTVIKNFFQMALKLIYRVEIEGMENYHKAGKRVLIIANHASFIDPILIGALLPDRLIFAIDTYIARKWWLKPFLTFLRAFPVDPSNPMATKTLIDKLKSNTPVVIFPEGRITVTGSLMKIYEGPGMIADKADAVLLPIRLDGPQYSVFSRMHGKLRLRLFPKIRMHILKPQKLSAAHDLMGRDRRHEIGNMLYDIMTEMMFSGTKNTQTLFESFVHAKEQFGGNTTIIQDANKNSLTYNKICAGSFILGKRIAARTNYRDYVGFLLPNAAGTVVAFFATILYGRVPAMLNFSTGLKNLISSCKTAKIKIIYTSRVFIEKASLEHMIEEINQHDIEIVYLEDLRKEIKFYNKFKGILKSLFPLYYYQHYFTKKKYKKLPHANDPAVVLFTSGSEGLPKGVVLSHSNIIANLKQLSSRIDFTSSDKLFSALPIFHSFGLTAGMILPLLYGISTYFYPSPLHYRIIPEMVYGVNATFFFATDTFLAGYAKYAHPYDFFSIRYVFAGAEKLKEETRKIWQEKFGIRVLEGYGATETAPAISVNSPMHYKPGTVGRILPNINYKLEAVEGINEGGKLIVNGPNVMLGYLRPEKPGIIQKPAHVTQDETYEGWYDTGDIVSVDEDKYITILGRAKRFAKIGGEMVSLAAIEEAVTKLWPENLHGTLSVDDPKKGESIILFTDKEGAAKEDIIRFLNKEGYSELYIPKSVIYIEEMPLLGAGKIDYMSLKEKLKNM
+&gt;Thioploca ingrica 
+METEITLWKNRSFIAYLSISFLNAFTDLGHKIIIQNTLFKIYDGTELRIYSAIIQAIMLLPFVMVFTPAGYLADKFPKPWIIQISALIAIPITLLITVSYYLGWFWPAFMLTFLLALQSAFYSPAKYGYIRELVGPQKLAAANSAIQATTIVAILGGTFIYSLLFEGILPAHPQTSSEILQAVRYLGFLLVGGTLLEFSLTFRLPETRPVEATLHFDFKRYLRAEYLRENLYAVWSREGIWLSIIGLSVFYAISQVVLANFGAYLKDVTGGTDTRIANGLMALSGIGFILGSLFAGKVSKNYIETGIIPLGAAGICVTLIILPLLSDYLTLAIVFTTYGFFGGMFVVPLYALIQYLANEDQAGVVMAANNFIQNIFMLIFLGVSILLASLAVSDRVTFYLLAAVTLIGTVYALRKLPQSFVRYLVASLVKQRYRVQVVGMKNLPSTGGVLLLGNHISWLDWAILQIASPRPIRFVIIRTYYEKWYLKWFLDLFQVIPITAGGSKNALEQVKNALQAGEVVALFPEGHISHNGHLSLFKAGFERAVQDTHVFIVPFYLRGLWGSFFSYAAGKYRTGTRSGRLRHITVGFGPPLPATTSAAQVKQAVFETSIHTWQHYLENLEPLALSFLRTAKACGGQTAVLETRACLTYHRLLAGALLFTRHLRTLFSAQQHIGILLPPSAGAVLANLTVLMQGKTVVNLNYTSPLEVISASVQRADIQTILTSRRFLKKLENRKIDLTPLGEQVKLILLEDLGEQISSKERLWAYLQARFLPVWLLRSLYFHKSRLDDTAAILFSSGSEGTPKGVMLSHANLMGNLKQIAAILNPNEEDVILNALPAFHAFGLTVTTFMPLIEGIPMVCQPDPTDAQAVGRLVAQYKVTLLLGTSTFLRIYTKSRKVLPLMFQSLRIIVAGAERLSEEVRKSFKEKFNKDIYEGYGATETSPVASVNILDILLSYSGEVQIGNKPGTVGLPLPGARVKIVDPDTLAELPVGEAGLVLIGGTQIMQRYLKDPEKTAQVIVEQHGVRWYKSGDKGHLDEDGFLTILDRYSRFAKLGGEMVSLGAVETELTKLFDHPELEILAVAIPEQSKGEKIVLLIAGEVDTDSLRTQVLKSGINPLMQPKEYLKVAAIPKLGTGKVDFTAAKRLALK
+&gt;Mesorhizobium plurifarium 
+MEIAMNTHLMMSRRFAPLFWTQFLSAFNDNFLKNTLVFLILFTLAKDQAASLVTLAGAIFMAPFLLLSALGGEIADRFDKALIARRLKFTEIAAAGLSVVGIALSSIPVLMTALLMFGIISALFGPIKYGILPDHLERKELPKANAWIESATFAAILGGTIAGGVVSADGIGVAVFGPIMMALAVGCWLASRYIPATGSAAPNLTIDKNIFRSTWRQVAELRTDMRIWRAGLMTSWFWLVGAIVLSILPAMIKDSLGGNEIAVTAYLAVFAVSIAIGSAIAAWMSQGRMVLLPAPVGTALIALFGLHLAWTIWSMQPSPKAETLAAFFAGPNTIRVAIDLAGMAIAAAFLVVPTFAAVQAWSPEARRARVVAAVSIVNAGFMTVGGALVAAIQAAGVSIAGILFGLVVANAIAAWLMLKFLPTNPFRDFVSILFRAFLRLEVEGLDNLKAAGKAPILALNHVSFLDGPLALTLTDEEPVFAIDYTIAQAWWMKPFMKLARALPLNPAKPMSTRTLIKIVQGGDPLVIFPEGRITVTGGLMKVYDGAAMVADKTGSMVVPVRIEGLEKSYFSRLSSQHVRHRLFPKVKVTILEPVKLEVAQELKGRQRRAAAGSALYQVMSDLVFRTQDIGKTVLEKIIETANERGLKELAVQDPVTGSLSYGKLLTAAAVLGEKFEHLYAGQETLGIMLPNANGSCATLLGVMSAGKVPAMINFTAGAANILSACKAAEVRTVLTSRAFVEQAKLGPVVEEIGRSVDIVWLDDLRATIGLKDKLLGLLRKTTPRVARKADDPAAILFTSGSEGTPKGVVLTHRNILANAAQAASRIDFHSGDKVFNVLPIFHSFGMTAGTVLPLISGVPVYFYPSPLHYRIVPELIYGSNATIIFGTDTFLSGYARTAHPYDFRSVRYCFAGAEPVKAATRTTYMEKFGLRILEGYGVTETAPVIAINTPMYNKSGSVGKIMPGMEYRLEPVPGVDEGGRLFVRGPNVMAGYLRAENPGVIEPLENGWHDTGDVVTVDDAGFISIRGRAKRFAKIGGEMVSLAAVEALAGELWKGSLSAVATMPDARKGEKLILITEASGATRADFLAFAKANGAMELMVPAEVRIVPKVPVLGSGKLDFAGVTRMVRGEEELKVKAA
+&gt;Novosphingobium malaysiense 
+MLAKRRFAPMFTVQFLGAFNDNLLKYAMLLLANYGLFRDAPDKAGMLSVVATGLFTLPYFLFSALAGQVADRIDKATLVRWVKLAEVGIMGIALVGFAWESIPLLLASLFLMGLHSTVFGPVKYSILPQHLHEREIMGGTGLIEAGTFLAILTGQLLAGQVLPWEAGLVAMGLAVLGYVSALAIPSAPPSRGGHPVDWNIARGTWHVLTTAHKGRGVWLAVLGISWFFTAGAVLLTEFVPLVSDTLNAQKDVATLFLVIFSVTIALGSMTVNRLLQGEVSAKYVPISALALALGLIDLSFAAGGFAVTYPNASIAEFAASPGSWRIFADLFVIAFSGGMFIVPLYAILQVRSPAEERSQVIAANNILNAGMTVIAVVIVALLLSAGFSVAQVIGVLGFATLVVAMVSIWLLPETLFKAVIRVVLKVLYRVDVTGIENMPAPGERAVVVVNHLSFLDGVLLGAFLPGKPTFAVHTAIAKSWWIQPFLKLFRAFPVDPTNPMAAKAMVRTVREGNTLVIFPEGRITVTGALMKVFDGPGMVADKADAPIVPVRLNGPQFTPFSRLKGKVRTRVFPKISIDVLPPRRFRIEGEMSARERRAIAGRRLYDEMSAMIFATTDTDRTLFSALCAARAVHGGKAEVVEDIKREPLSLDRLILGSELLGDRLAHRTRPGEAVGLLLPNVNGAALAFFALQAEGRVAAMLNFTAGLTNLLSACETAEIRAVVTAHAFVEQAKLQDTINVLEASGRRVLYLEDLAQEIGTGAKLWHLLLKNGAEGRHLKRKVSPDAPAVILFTSGSEGTPKGVVLTHRNLLANCAQLAARIDFNTSDVVLNALPVFHSFGLTGGTLLPILNGIKTVFYPSPLHYRIVPALAYDANATILFGTDTFLSGYARMAHSYDFYSLRYIFAGAEKVREETRKTYADKFGLRILEGYGATECAPVIAVNTPMHFKAGTVGRLLPAMEARLEPVPGIEEGGRLYVKGPNVMAGYMLASDPGKLQPPAEGWHDTGDIVTIDDAGFVTIRGRAKRFAKIGGEMVSLPAVEGYAAKVWPNADHAVVTRPDAKKGEQLVLYTTTPDADPKALLAWGRANGVTELMLPRDIRVLDALPVLGTGKLDYVTLGEMAKGC
+&gt;Rickettsia monacensis 
+MDTNKLYLFKDRRFLPNFIVQLCGCLNDNILKNALVILITYSITDSLSKYNNLLVLIANATFVLPFIIFASIAGQIADKYERANLIKIIKICEIGIIAFAIYGFHHNNLLILFCSICLMGIHSTFFGPIKYSVLPDHLNKDELLGANGFVEAGTFIGIFIGTIIGSYYTISNNFIIYSLITIAFLGFITSLFSPKSKNANSDIKINFNIIDESINMIKYTKAKKQIYLAILGISWFWFIEAAIISQIPLLAKITFKADENVANLFLAVFSLGVGVGSFLCSKIFEDEITVKYLFISALGISIFGIDLFFASRISSVNYEPTQLKSILVFLSKRHNWRIVIDLFFLAAIGGLYIVPLFAILQHYANPAHRSRIIAVNNLINSIFMVGSTIILSLLFYLNFTIPWIILFISLANIIVTIHIYRLIPEVKIIPFKLLRRIFQICFDLMYKVEVKGFENFQKAGKKVVVVANHISYLDPPLIATYLREEMTFAISPDIQKIWWIKPFLRMARTLPVDPSNPMAIKTLVKEVQKDQKVAIFPEGRISVTGSLMKIYEGPGMIADKAGATVLPVRIDGTQFTHLSKFKNILKRKIFPKITITILPPVKFANMDAASNQERRSYISRTLYDIMADMVFESSDYKNTLFSSLIEAAKIHGFKKKIVDDFEKNAVTYRDLILKSFILGDLIKKNNIFGRNLGLMLPNTTNTLITFYAMQSSGYVPAIINWSSGISTIINSCKLTQIKVVYTSKQFIEKANLHELITNLLDFGIKIIYLEDFKNQIGTALKLKAKIGSYFAQTYYNYFCRNRDDEKPAVIIFTSGTECEPKAVLLSHRNLQTNRYQITAKVPFSPEDIVFNSLPLFHCFGLGGAIITTLNGIKLFLYPSPINYRSIPEVIYDIGATILISTDTFLNGYANYAHPYDFYSLRYIFAGSEKLKESTRQFWLNKYGIRIFEGYGITEAAPIIACNTPMHNKAGTVGRLLPKIDYKLEKVEGINEGGRLFIKGPNIMLGYLDLESNYTYKEWHDTGDIVKIDSEGYITILGRLKRFAKIAGEMISLTKIEEFASEIDPDSLHAAISIPDKTHGEKIILLTTGSDINRENFADAVSKAQISLLHLPKVIITDSEIPLLANGKIDYLEIMKNQQRHHMA
+&gt;Legionella massiliensis 
+MKLTRIKGFLPYMMLVFFNTFIDLGHKILIQDTLYQTLTGSAYTVFSSIINALILLPYILLFTPSGFIADKYPKATVLKITAAAAIPLTVLVTWCYFKGFFWGAFLLTFLLAIQSALNSPAKYGYIKEMFGKENLSQVNAIVQTLAILAILAGTFVFTYIFSYFISASALKNSSDKVLLLKAFAPAGFLLIVFSIFETLMTFRLVKNPAADPQSQYELAQYFKGKYVKSYFNKTRESPVIFACIIGLSVFWAVNQVLLASYGAYLKDHIGHVSVLFAQGSLALGGIGILLGAMYAGKVSKGFVETGLIPVATLGIALGLLLLPCLSNPTAIISLFLVYGFFGGMLIVPLNALIQFNAPRQETGKVQSANSFLQNCFMLGFLGLTVLASLAGMDSRLLLLSLFVIALFGAIYTLIALPQSLTRYLLYFIASRFYRLNVYQLDNLPSSGGVLLLGNHVSFIDWAVLQIACPRPIRFVMERSIYQVWYINWLLKKFNVIPISRGASQDALLEINKSLNEGEVVALFPEGRLTRNGQMGIFRTGFERAAINAKAVIIPFYIHGLWGSKTSRRTAHQKNLRPTNHRQVSVIYGPAMDISSNAQQVKQQVTQLSIKAWKYSIGDLANIQSEWLHQVKKMSDSTAIIAENGKEITMQQLLDRTLGFSRRIKRFVKQQQNIAIVLPTCTEGIIANLATLILGKTIVNLDCTQDTSFFASALKQASIQTIISSHQFKGFLEKQAVPAKIIYIEELTSRKYLSKWVPAWLIKLLFFKKTDVHSTAAIVFSSGSTGERKGVKLSHANLLSNINQVAAVFSLESRDVMLNTLPLSHAFGLTVTTLVPLLKGIPMLCYPQPENTLIIAKLTYKYRVTLLCSTSNLLNLYIQNTEIHPQMLSSLRMVVAGAEKLSTEVYKGFKDKFNLEIYEGYGATEVAPVASCNLPDVISTDDWHIHKAGKAGTVGLPLPGCAFRVVDPQTLKDLTVGEEGLVLIGGTQVMTGYLNQPEKNQDVLIQDNHYIWYKTGDRGLLDREGFLTVVDRY</code></pre>
+</div>
+</div>
+<div id="day-3-stockholm-format-converter" class="section level2">
+<h2>Day 3 — Stockholm Format Converter</h2>
+<p>Command-line script for converting HMMER Stockholm alignment output
+to FASTA format (<code>Week1/exercises/stoTransform.py</code>). Run
+as:</p>
+<pre><code>python stoTransform.py -i &lt;aligned.sto&gt; -o &lt;output.fa&gt;</code></pre>
+<pre class="python"><code>from Bio import AlignIO
+import argparse
+import io
+import re
+
+parser = argparse.ArgumentParser(description=&#39;input and output files&#39;)
+parser.add_argument(&#39;-i&#39;,action=&#39;store&#39;,dest=&#39;input&#39;, help=&#39;input file &#39;)
+parser.add_argument(&#39;-o&#39;,action=&#39;store&#39;,dest=&#39;output&#39;, help=&#39;output file &#39;)
+args = parser.parse_args()
+
+with open(args.input, &quot;rb&quot;) as raw:
+    data = raw.read()
+
+# Try common encodings for Windows/hmmalign output
+for enc in (&quot;utf-8-sig&quot;, &quot;utf-16&quot;, &quot;latin-1&quot;):
+    try:
+        text = data.decode(enc)
+        if &quot;# STOCKHOLM&quot; in text[:100]:
+            break
+    except UnicodeDecodeError:
+        continue
+else:
+    raise ValueError(&quot;Could not decode input file&quot;)
+
+handle = io.StringIO(text)
+align = AlignIO.read(handle, &quot;stockholm&quot;)
+
+align_dict=dict()
+
+
+output_str=&quot;&quot;
+for record in align:
+    seq=str(record.seq).upper()
+    seq=seq.replace(&quot;.&quot;,&quot;-&quot;)
+    output_str=output_str+&quot;&gt;&quot;+record.id+&quot;\n&quot;+seq+&quot;\n&quot;
+
+
+with open(args.output, &quot;w&quot;) as myfile:
+    myfile.write(output_str)</code></pre>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.4.3 (2025-02-28)
+Platform: aarch64-apple-darwin20
+Running under: macOS 26.3.1
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: Europe/Zurich
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] reticulate_1.45.0 workflowr_1.7.2  
+
+loaded via a namespace (and not attached):
+ [1] Matrix_1.7-2      jsonlite_2.0.0    compiler_4.4.3    promises_1.5.0   
+ [5] Rcpp_1.1.1        stringr_1.5.1     git2r_0.36.2      callr_3.7.6      
+ [9] later_1.4.8       jquerylib_0.1.4   png_0.1-9         yaml_2.3.10      
+[13] fastmap_1.2.0     lattice_0.22-6    R6_2.6.1          knitr_1.50       
+[17] tibble_3.2.1      rprojroot_2.1.1   bslib_0.9.0       pillar_1.10.2    
+[21] rlang_1.1.5       cachem_1.1.0      stringi_1.8.7     httpuv_1.6.17    
+[25] xfun_0.52         getPass_0.2-4     fs_1.6.5          sass_0.4.9       
+[29] otel_0.2.0        cli_3.6.4         magrittr_2.0.3    ps_1.9.0         
+[33] grid_4.4.3        digest_0.6.37     processx_3.8.6    rstudioapi_0.18.0
+[37] lifecycle_1.0.4   vctrs_0.6.5       evaluate_1.0.3    glue_1.8.0       
+[41] whisker_0.4.1     rmarkdown_2.29    httr_1.4.7        tools_4.4.3      
+[45] pkgconfig_2.0.3   htmltools_0.5.8.1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

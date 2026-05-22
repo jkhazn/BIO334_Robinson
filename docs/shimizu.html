@@ -11,7 +11,7 @@
 
 
 
-<title>Home</title>
+<title>Shimizu Block — May 20, 21, 22</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -29,6 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -231,6 +234,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -238,6 +304,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -281,7 +357,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Home</h1>
+<h1 class="title toc-ignore">Shimizu Block — May 20, 21, 22</h1>
 
 </div>
 
@@ -314,7 +390,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span> 0
 </p>
@@ -351,6 +427,90 @@ class="panel-collapse collapse">
 <p>Great! Since the R Markdown file has been committed to the Git
 repository, you know the exact version of the code that produced these
 results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20260522code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20260522)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20260522code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20260522)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
 </div>
 </div>
 </div>
@@ -412,10 +572,11 @@ have uncommitted changes.
 <div id="versions" class="tab-pane fade">
 <p>
 These are the previous versions of the repository in which changes were
-made to the R Markdown (<code>analysis/index.Rmd</code>) and HTML
-(<code>docs/index.html</code>) files. If you’ve configured a remote Git
-repository (see <code>?wflow_git_remote</code>), click on the hyperlinks
-in the table below to view the files as they were in that past version.
+made to the R Markdown (<code>analysis/shimizu.Rmd</code>) and HTML
+(<code>docs/shimizu.html</code>) files. If you’ve configured a remote
+Git repository (see <code>?wflow_git_remote</code>), click on the
+hyperlinks in the table below to view the files as they were in that
+past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -444,7 +605,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/jkhazn/BIO334_Robinson/blob/0c324d3f9ae62bba1f344b157c2bb5968ec3702b/analysis/index.Rmd" target="_blank">0c324d3</a>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/0c324d3f9ae62bba1f344b157c2bb5968ec3702b/analysis/shimizu.Rmd" target="_blank">0c324d3</a>
 </td>
 <td>
 jkhazn
@@ -456,40 +617,6 @@ jkhazn
 Add four professor block analyses
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jkhazn/BIO334_Robinson/c55f1843c30ea85fb3e5327cdde71785419f811f/docs/index.html" target="_blank">c55f184</a>
-</td>
-<td>
-jkhazn
-</td>
-<td>
-2026-05-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jkhazn/BIO334_Robinson/blob/c9e01d9f35b2b6b27efffbd1ea7b9bcb857435b0/analysis/index.Rmd" target="_blank">c9e01d9</a>
-</td>
-<td>
-James Khaznadar
-</td>
-<td>
-2026-05-22
-</td>
-<td>
-Start workflowr project.
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -497,44 +624,124 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<p>BIO334 Practical Bioinformatics — University of Zurich, Spring
-2026.</p>
-<table>
-<colgroup>
-<col width="31%" />
-<col width="31%" />
-<col width="36%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Block</th>
-<th>Dates</th>
-<th>Topics</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="von_mering.html">von Mering</a></td>
-<td>May 7, 8, 12</td>
-<td>Python basics, multiple sequence alignment, NJ trees</td>
-</tr>
-<tr class="even">
-<td><a href="wagner.html">Wagner</a></td>
-<td>May 13, 15, 19</td>
-<td>Fitness landscapes, DHFR data, igraph</td>
-</tr>
-<tr class="odd">
-<td><a href="shimizu.html">Shimizu</a></td>
-<td>May 20, 21, 22</td>
-<td>Nucleotide diversity, GFF annotation, Tajima’s D</td>
-</tr>
-<tr class="even">
-<td><a href="robinson.html">Robinson</a></td>
-<td>May 22 onward</td>
-<td>TBD</td>
-</tr>
-</tbody>
-</table>
+<p>Nucleotide diversity, GFF annotation analysis, and Tajima’s D using
+<em>Arabidopsis thaliana</em> data (module by Masaomi Hatakeyama).</p>
+<div id="gff-annotation-analysis" class="section level2">
+<h2>GFF Annotation Analysis</h2>
+<p>Parses the TAIR10 chromosome 1 GFF file to compute genome length,
+exon coverage, and gene region coverage
+(<code>bio334_2026/data/Athaliana_SNPs/gff_length_summary.py</code>).</p>
+<pre class="python"><code># gff_length_summary.py
+
+def parse_gff(filepath):
+    genome_length = 0
+    exon_intervals = []
+    gene_intervals = []
+
+    with open(filepath) as f:
+        for line in f:
+            if line.startswith(&quot;#&quot;) or not line.strip():
+                continue  # Skip comment lines or empty lines
+
+            fields = line.strip().split(&#39;\t&#39;)
+            if len(fields) &lt; 5:
+                continue  # Skip malformed lines
+
+            feature_type = fields[2]
+            start = int(fields[3])
+            end = int(fields[4])
+
+            if feature_type == &quot;chromosome&quot;:
+                # Get genome length from the &#39;chromosome&#39; feature
+                genome_length = end - start + 1
+            elif feature_type == &quot;exon&quot;:
+                # Store exon start and end positions
+                exon_intervals.append((start, end))
+            elif feature_type == &quot;gene&quot;:
+                # Store gene region (includes exons and introns)
+                gene_intervals.append((start, end))
+
+    # Merge overlapping intervals
+    def merge_intervals(intervals):
+        intervals.sort()
+        merged = []
+        for start, end in intervals:
+            if not merged or start &gt; merged[-1][1]:
+                merged.append([start, end])
+            else:
+                merged[-1][1] = max(merged[-1][1], end)
+        return merged
+
+    merged_exons = merge_intervals(exon_intervals)
+    merged_genes = merge_intervals(gene_intervals)
+
+    # Calculate total lengths
+    exon_total_length = sum(end - start + 1 for start, end in merged_exons)
+    gene_total_length = sum(end - start + 1 for start, end in merged_genes)
+
+    return genome_length, exon_total_length, gene_total_length
+
+# Run the parser and print results
+gff_file = &quot;/Users/jameskhaznadar/Desktop/bio334_python/bio334_2026/data/Athaliana_SNPs/TAIR10_chr1.gff&quot;
+genome_len, exon_len, gene_len = parse_gff(gff_file)
+
+exon_ratio = exon_len / genome_len if genome_len &gt; 0 else 0
+gene_ratio = gene_len / genome_len if genome_len &gt; 0 else 0
+
+print(f&quot;# Genome length: {genome_len}&quot;)</code></pre>
+<pre><code># Genome length: 30427671</code></pre>
+<pre class="python"><code>print(f&quot;# Total exon length (merged): {exon_len}&quot;)</code></pre>
+<pre><code># Total exon length (merged): 12621400</code></pre>
+<pre class="python"><code>print(f&quot;# Exon coverage ratio: {exon_ratio:.4f} ({exon_ratio*100:.2f}%)&quot;)</code></pre>
+<pre><code># Exon coverage ratio: 0.4148 (41.48%)</code></pre>
+<pre class="python"><code>print(f&quot;# Total gene region length (merged): {gene_len}&quot;)</code></pre>
+<pre><code># Total gene region length (merged): 16062034</code></pre>
+<pre class="python"><code>print(f&quot;# Gene coverage ratio: {gene_ratio:.4f} ({gene_ratio*100:.2f}%)&quot;)</code></pre>
+<pre><code># Gene coverage ratio: 0.5279 (52.79%)</code></pre>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.4.3 (2025-02-28)
+Platform: aarch64-apple-darwin20
+Running under: macOS 26.3.1
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: Europe/Zurich
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] reticulate_1.45.0 workflowr_1.7.2  
+
+loaded via a namespace (and not attached):
+ [1] Matrix_1.7-2      jsonlite_2.0.0    compiler_4.4.3    promises_1.5.0   
+ [5] Rcpp_1.1.1        stringr_1.5.1     git2r_0.36.2      callr_3.7.6      
+ [9] later_1.4.8       jquerylib_0.1.4   png_0.1-9         yaml_2.3.10      
+[13] fastmap_1.2.0     lattice_0.22-6    R6_2.6.1          knitr_1.50       
+[17] tibble_3.2.1      rprojroot_2.1.1   bslib_0.9.0       pillar_1.10.2    
+[21] rlang_1.1.5       cachem_1.1.0      stringi_1.8.7     httpuv_1.6.17    
+[25] xfun_0.52         getPass_0.2-4     fs_1.6.5          sass_0.4.9       
+[29] otel_0.2.0        cli_3.6.4         magrittr_2.0.3    ps_1.9.0         
+[33] grid_4.4.3        digest_0.6.37     processx_3.8.6    rstudioapi_0.18.0
+[37] lifecycle_1.0.4   vctrs_0.6.5       evaluate_1.0.3    glue_1.8.0       
+[41] whisker_0.4.1     rmarkdown_2.29    httr_1.4.7        tools_4.4.3      
+[45] pkgconfig_2.0.3   htmltools_0.5.8.1</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -557,6 +764,8 @@ footer is added to webpages before the MathJax javascript. -->
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -589,6 +798,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

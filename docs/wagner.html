@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Wagner Block — May 13, 15, 19</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">BIO334_Robinson</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/jkhazn/BIO334_Robinson">
+    <span class="fab fa-github"></span>
+     
+    Source code
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Wagner Block — May 13, 15, 19</h1>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2026-05-22
+</p>
+<p>
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>BIO334_Robinson/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
+</p>
+<p>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.2). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20260522code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20260522)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20260522code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20260522)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjkhaznBIO334Robinsontree0c324d3f9ae62bba1f344b157c2bb5968ec3702btargetblank0c324d3a">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/jkhazn/BIO334_Robinson/tree/0c324d3f9ae62bba1f344b157c2bb5968ec3702b" target="_blank">0c324d3</a>
+</a>
+</p>
+</div>
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomjkhaznBIO334Robinsontree0c324d3f9ae62bba1f344b157c2bb5968ec3702btargetblank0c324d3a"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version
+<a href="https://github.com/jkhazn/BIO334_Robinson/tree/0c324d3f9ae62bba1f344b157c2bb5968ec3702b" target="_blank">0c324d3</a>.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rproj.user/
+
+Unstaged changes:
+    Modified:   .Rprofile
+    Modified:   BIO334_Robinson.Rproj
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+<p>
+These are the previous versions of the repository in which changes were
+made to the R Markdown (<code>analysis/wagner.Rmd</code>) and HTML
+(<code>docs/wagner.html</code>) files. If you’ve configured a remote Git
+repository (see <code>?wflow_git_remote</code>), click on the hyperlinks
+in the table below to view the files as they were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/0c324d3f9ae62bba1f344b157c2bb5968ec3702b/analysis/wagner.Rmd" target="_blank">0c324d3</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-22
+</td>
+<td>
+Add four professor block analyses
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<p>Fitness landscape analysis of the DHFR (dihydrofolate reductase)
+protein using 6-residue sequence space, igraph, numpy, scipy, and
+matplotlib (<code>Wagner/Excersize1.py</code>).</p>
+<div id="data-loading" class="section level2">
+<h2>Data Loading</h2>
+<pre class="python"><code>import numpy as np
+import igraph as ig
+import random
+import scipy.stats as stats
+import matplotlib
+matplotlib.use(&#39;Agg&#39;)
+import matplotlib.pyplot as plt
+
+with open(&#39;/Users/jameskhaznadar/Desktop/bio334_python/Wagner/data/dhfr_wTMP.txt&#39;) as file:
+    dictionary = {}
+    list_of_sequences = []
+    list_of_fitness = []
+    next(file)
+    for line in file.readlines():
+        line_list = (line.strip().split(&#39;\t&#39;))
+        dictionary[line_list[0]] = float(line_list[1])
+        list_of_sequences.append(line_list[0])
+        list_of_fitness.append(float(line_list[1]))</code></pre>
+<pre><code>&#39;genotype\tfitness\n&#39;</code></pre>
+<pre class="python"><code>#print((4**6)-len(list_of_fitness)) # There are 48 sequences missing
+mean_fitness = (np.mean(list_of_fitness)) # Mean fitness
+above_average_fitness = [i for i in list_of_fitness if i &gt; mean_fitness]
+#print(len(above_average_fitness)/len(list_of_fitness)*100) # How many have fitness above average
+non_detrimental_effect = [i for i in list_of_fitness if i &gt;= 0]
+#print(len(non_detrimental_effect)/len(list_of_fitness)*100)
+#print(mean_fitness)
+
+
+
+&#39;&#39;&#39;plt.hist(list_of_fitness, bins=50)
+plt.title(&#39;Histogram showing distribution of Fitness&#39;)
+plt.xlabel(&#39;Fitness&#39;)
+plt.ylabel(&#39;Count&#39;)
+plt.show()
+&#39;&#39;&#39;</code></pre>
+<pre><code>&quot;plt.hist(list_of_fitness, bins=50)\nplt.title(&#39;Histogram showing distribution of Fitness&#39;)\nplt.xlabel(&#39;Fitness&#39;)\nplt.ylabel(&#39;Count&#39;)\nplt.show()\n&quot;</code></pre>
+<pre class="python"><code>
+#Overall introducing mutations to this specific sequence has a mostly detrimental effect, with only 3.4% of mutations actually increasing fitness.</code></pre>
+</div>
+<div id="fitness-landscape-graph-construction" class="section level2">
+<h2>Fitness Landscape Graph Construction</h2>
+<p>Builds a directed igraph where each node is a sequence and edges
+connect sequences differing by exactly one amino acid (Hamming distance
+= 1).</p>
+<pre class="python"><code>graph = ig.Graph(directed=True)
+
+#graph.add_vertices(n=len(list_of_fitness))
+
+#graph.vs[&#39;Sequence&#39;] = list_of_sequences
+#graph.vs[&#39;Fitness&#39;] = list_of_fitness
+
+
+
+
+edges = []
+
+def hamdist(g1, g2):
+    return sum(c1 != c2 for c1, c2 in zip(g1, g2))
+
+seq_to_node = {}
+
+
+for key,value in dictionary.items():
+    v = graph.add_vertex()
+    v[&#39;Sequence&#39;] = key
+    v[&#39;Fitness&#39;] = value
+    seq_to_node[key] = v.index
+
+
+
+
+for key1,value1 in dictionary.items():
+    for key2,value2 in dictionary.items():
+        if key1 &gt; key2:
+            if (hamdist(key1,key2)) == 1:
+                edges.append((seq_to_node[key1],seq_to_node[key2]))
+                edges.append((seq_to_node[key2],seq_to_node[key1]))
+
+graph.add_edges(edges)
+
+
+for i in graph.es:
+    source = i.source
+    target = i.target
+    i[&#39;FitnessDiff&#39;] = graph.vs[target][&#39;Fitness&#39;] - graph.vs[source][&#39;Fitness&#39;]
+
+
+
+
+#Now check whether building the graph worked, for example by printing the DNA sequence of the source and target nodes of the first and last few edges
+
+
+
+&#39;&#39;&#39;for e in graph.es[:5]:
+    target = e.target
+    source = e.source
+    fitnessdiff = e[&#39;FitnessDiff&#39;]
+    start = graph.vs[source][&#39;Sequence&#39;]
+    end = graph.vs[target][&#39;Sequence&#39;]
+
+    print(start + &#39; -&gt; &#39;,end,fitnessdiff)
+&#39;&#39;&#39;</code></pre>
+<pre><code>&quot;for e in graph.es[:5]:\n    target = e.target\n    source = e.source\n    fitnessdiff = e[&#39;FitnessDiff&#39;]\n    start = graph.vs[source][&#39;Sequence&#39;]\n    end = graph.vs[target][&#39;Sequence&#39;]\n\n    print(start + &#39; -&gt; &#39;,end,fitnessdiff)\n&quot;</code></pre>
+<pre class="python"><code>print(len(graph.vs))</code></pre>
+<pre><code>4048</code></pre>
+<pre class="python"><code>print(len(list_of_sequences))</code></pre>
+<pre><code>4048</code></pre>
+<pre class="python"><code>print(len(graph.es))</code></pre>
+<pre><code>72112</code></pre>
+<pre class="python"><code>&#39;&#39;&#39;
+plt.hist(, bins=50)
+plt.title(&#39;Histogram showing distribution of node degrees&#39;)
+plt.xlabel(&#39;Degrees&#39;)
+plt.ylabel(&#39;Count&#39;)
+plt.show()
+
+&#39;&#39;&#39;</code></pre>
+<pre><code>&quot;\nplt.hist(, bins=50)\nplt.title(&#39;Histogram showing distribution of node degrees&#39;)\nplt.xlabel(&#39;Degrees&#39;)\nplt.ylabel(&#39;Count&#39;)\nplt.show()\n\n&quot;</code></pre>
+<pre class="python"><code>#out_degree = np.array(graph.degree(mode=&#39;out&#39;))
+#print((out_degree&lt;18).sum()/72112)
+
+
+
+&#39;&#39;&#39;plt.hist(graph.es[&quot;FitnessDiff&quot;], bins=50)
+plt.title(&#39;Histogram showing distribution of node degrees&#39;)
+plt.xlabel(&#39;Degrees&#39;)
+plt.ylabel(&#39;Count&#39;)
+plt.show()
+&#39;&#39;&#39;</code></pre>
+<pre><code>&#39;plt.hist(graph.es[&quot;FitnessDiff&quot;], bins=50)\nplt.title(\&#39;Histogram showing distribution of node degrees\&#39;)\nplt.xlabel(\&#39;Degrees\&#39;)\nplt.ylabel(\&#39;Count\&#39;)\nplt.show()\n&#39;</code></pre>
+</div>
+<div id="peak-detection" class="section level2">
+<h2>Peak Detection</h2>
+<p>A peak is a node with no out-neighbour of equal or higher fitness (a
+local maximum in the fitness landscape).</p>
+<pre class="python"><code>&#39;&#39;&#39;
+peak_dic = {}
+
+peaks = 0
+for v in graph.vs:
+    index_list = graph.neighborhood(v,  mode = &quot;out&quot;, order = 1, mindist = 1)
+    #print(index_list)
+    source_fitness = v[&#39;Fitness&#39;]
+    higher_value = False
+    if higher_value == False:
+        for i in index_list:
+            if graph.vs[i][&#39;Fitness&#39;] &gt;= source_fitness:
+                print(source_fitness,graph.vs[i][&#39;Fitness&#39;])
+                break
+            if i == index_list[-1]:
+                peak_dic[v[&#39;Sequence&#39;]] = v[&#39;Fitness&#39;]
+
+
+print(peak_dic)&#39;&#39;&#39;</code></pre>
+<pre><code>&#39;\npeak_dic = {}\n\npeaks = 0\nfor v in graph.vs:\n    index_list = graph.neighborhood(v,  mode = &quot;out&quot;, order = 1, mindist = 1)\n    #print(index_list)\n    source_fitness = v[\&#39;Fitness\&#39;]\n    higher_value = False\n    if higher_value == False:\n        for i in index_list:\n            if graph.vs[i][\&#39;Fitness\&#39;] &gt;= source_fitness:\n                print(source_fitness,graph.vs[i][\&#39;Fitness\&#39;])\n                break\n            if i == index_list[-1]:\n                peak_dic[v[\&#39;Sequence\&#39;]] = v[\&#39;Fitness\&#39;]\n\n\nprint(peak_dic)&#39;</code></pre>
+<pre class="python"><code>
+
+
+def find_peaks(graph):
+    peak_dic = {}
+    for v in graph.vs:
+        index_list = graph.neighborhood(v, mode=&#39;out&#39;, order=1, mindist=1)
+        source_fitness = v[&#39;Fitness&#39;]
+        is_peak = not any(graph.vs[i][&#39;Fitness&#39;] &gt;= source_fitness for i in index_list)
+        if is_peak:
+            peak_dic[v[&#39;Sequence&#39;]] = source_fitness
+    return peak_dic
+
+peak_dic = find_peaks(graph)</code></pre>
+</div>
+<div id="pairwise-hamming-distances-peaks-vs-random-sample"
+class="section level2">
+<h2>Pairwise Hamming Distances — Peaks vs Random Sample</h2>
+<pre class="python"><code>&#39;&#39;&#39;
+
+peak_values = [i for i in peak_dic.values()]
+
+print((np.array(peak_values)&gt;0).sum())
+
+
+plt.hist(peak_values, bins=50)
+plt.title(&#39;Histogram showing distribution of node degrees&#39;)
+plt.xlabel(&#39;Degrees&#39;)
+plt.ylabel(&#39;Count&#39;)
+plt.show()&#39;&#39;&#39;</code></pre>
+<pre><code>&quot;\n\npeak_values = [i for i in peak_dic.values()]\n\nprint((np.array(peak_values)&gt;0).sum())\n\n\nplt.hist(peak_values, bins=50)\nplt.title(&#39;Histogram showing distribution of node degrees&#39;)\nplt.xlabel(&#39;Degrees&#39;)\nplt.ylabel(&#39;Count&#39;)\nplt.show()&quot;</code></pre>
+<pre class="python"><code>lst_hamdist = []
+for key, value in peak_dic.items():
+    for key2, value2 in peak_dic.items():
+        if key &gt; key2:
+            lst_hamdist.append(hamdist(key, key2))
+
+peak_ham = lst_hamdist
+
+ransample = random.sample(list_of_sequences, len(peak_dic.keys()))
+
+lst_ran_ham = []
+for key in ransample:
+    for key2 in ransample:
+        if key &gt; key2:
+            lst_ran_ham.append(hamdist(key, key2))
+
+print(len(peak_ham), len(lst_ran_ham))  # both should be 4656</code></pre>
+<pre><code>4656 4656</code></pre>
+<pre class="python"><code>&#39;&#39;&#39;
+plt.hist(peak_ham, bins=range(1, 8), alpha=0.5, label=&#39;Peaks&#39;, color=&#39;red&#39;)
+plt.hist(lst_ran_ham, bins=range(1, 8), alpha=0.5, label=&#39;Random sample&#39;, color=&#39;blue&#39;)
+plt.title(&#39;Pairwise Hamming distance: peaks vs random sample&#39;)
+plt.xlabel(&#39;Hamming distance&#39;)
+plt.ylabel(&#39;Count&#39;)
+plt.legend()
+#plt.show()&#39;&#39;&#39;</code></pre>
+<pre><code>&quot;\nplt.hist(peak_ham, bins=range(1, 8), alpha=0.5, label=&#39;Peaks&#39;, color=&#39;red&#39;)\nplt.hist(lst_ran_ham, bins=range(1, 8), alpha=0.5, label=&#39;Random sample&#39;, color=&#39;blue&#39;)\nplt.title(&#39;Pairwise Hamming distance: peaks vs random sample&#39;)\nplt.xlabel(&#39;Hamming distance&#39;)\nplt.ylabel(&#39;Count&#39;)\nplt.legend()\n#plt.show()&quot;</code></pre>
+<pre class="python"><code>
+#import scipy.stats as st
+#stat, p = st.mannwhitneyu(peak_ham, lst_ran_ham)
+
+#print(stat,p,np.mean(peak_ham), np.mean(lst_ran_ham))</code></pre>
+</div>
+<div id="random-walk-simulation" class="section level2">
+<h2>Random Walk Simulation</h2>
+<p>Greedy uphill random walk from low-fitness starting points; repeated
+1000 times. Set <code>eval=TRUE</code> to render (takes ~60 s and prints
+one line per walk).</p>
+<pre class="python"><code>F10 = min(list_of_fitness) + (max(list_of_fitness) - min(list_of_fitness)) * 0.1
+lowest_fitnesses = [seq for seq, fit in dictionary.items() if fit &lt; F10]
+
+#random.seed(10)
+lowest_fitnesses_random = random.sample(lowest_fitnesses, 1).pop()
+
+starting_point = graph.vs.find(Sequence=lowest_fitnesses_random).index
+
+if graph.vs[starting_point][&#39;Sequence&#39;] in peak_dic:
+    print(&#39;Dont continue, the randmo walk would start at a point&#39;)
+
+stepcount = []
+for i in range(1000):
+    lowest_fitnesses_random = random.sample(lowest_fitnesses, 1).pop()
+
+    starting_point = graph.vs.find(Sequence=lowest_fitnesses_random).index
+
+    steps = 0
+    while True:
+        neighbour_list = graph.neighborhood(starting_point, mode=&#39;out&#39;, order=1, mindist=1)
+        g_mut = random.sample(neighbour_list, k=1).pop()
+
+        fitness_start = graph.vs[starting_point][&#39;Fitness&#39;]
+        fitness_end = graph.vs[g_mut][&#39;Fitness&#39;]
+
+        if fitness_end &gt; fitness_start:
+            starting_point = g_mut
+            steps += 1
+            if graph.vs[starting_point][&#39;Sequence&#39;] in peak_dic:
+                break
+    stepcount.append(steps)
+    print(graph.vs[starting_point][&#39;Sequence&#39;], graph.vs[starting_point][&#39;Fitness&#39;], steps)
+
+print(stepcount)
+
+plt.hist(stepcount, bins=50, alpha=0.5, label=&#39;Peaks&#39;, color=&#39;red&#39;)
+
+plt.title(&#39;Pairwise Hamming distance: peaks vs random sample&#39;)
+plt.xlabel(&#39;Hamming distance&#39;)
+plt.ylabel(&#39;Count&#39;)
+plt.legend()
+plt.show()</code></pre>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.4.3 (2025-02-28)
+Platform: aarch64-apple-darwin20
+Running under: macOS 26.3.1
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: Europe/Zurich
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] reticulate_1.45.0 workflowr_1.7.2  
+
+loaded via a namespace (and not attached):
+ [1] Matrix_1.7-2      jsonlite_2.0.0    compiler_4.4.3    promises_1.5.0   
+ [5] Rcpp_1.1.1        stringr_1.5.1     git2r_0.36.2      callr_3.7.6      
+ [9] later_1.4.8       jquerylib_0.1.4   png_0.1-9         yaml_2.3.10      
+[13] fastmap_1.2.0     lattice_0.22-6    R6_2.6.1          knitr_1.50       
+[17] tibble_3.2.1      rprojroot_2.1.1   bslib_0.9.0       pillar_1.10.2    
+[21] rlang_1.1.5       cachem_1.1.0      stringi_1.8.7     httpuv_1.6.17    
+[25] xfun_0.52         getPass_0.2-4     fs_1.6.5          sass_0.4.9       
+[29] otel_0.2.0        cli_3.6.4         magrittr_2.0.3    ps_1.9.0         
+[33] grid_4.4.3        digest_0.6.37     processx_3.8.6    rstudioapi_0.18.0
+[37] lifecycle_1.0.4   vctrs_0.6.5       evaluate_1.0.3    glue_1.8.0       
+[41] whisker_0.4.1     rmarkdown_2.29    httr_1.4.7        tools_4.4.3      
+[45] pkgconfig_2.0.3   htmltools_0.5.8.1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
