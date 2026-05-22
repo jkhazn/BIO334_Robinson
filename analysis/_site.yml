@@ -1,7 +1,7 @@
-name: "BIO334_Robinson"
+name: BIO334_Robinson
 output_dir: ../docs
 navbar:
-  title: "BIO334_Robinson"
+  title: BIO334_Robinson
   left:
   - text: Home
     href: index.html
@@ -9,6 +9,10 @@ navbar:
     href: about.html
   - text: License
     href: license.html
+  right:
+  - icon: fab fa-github
+    text: Source code
+    href: https://github.com/jkhazn/BIO334_Robinson
 output:
   workflowr::wflow_html:
     toc: yes
