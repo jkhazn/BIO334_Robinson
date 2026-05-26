@@ -48,7 +48,7 @@ first_three_genes <- head(expr, 3)
 
 longer <- first_three_genes %>%
   pivot_longer(-feature, names_to = "sample", values_to = "counts") %>%
-  rename(gene = feature) %>%
+  dplyr::rename(gene = feature) %>%
   mutate(condition = md[sample, "dex"]) %>%
   select(sample, condition, gene, counts)
 ```
@@ -119,17 +119,35 @@ We have gene expression count data from 7 files comparing S2 cells that were unt
 
 ```{r load-counts}
 fs <- list.files(here::here("data", "files_for_ex1"), ".count$", full.names = TRUE)
+my_function <- function(filepath) {
+  df <- read.table(filepath)
+  df$sample <- basename(filepath)
+  df
+}
+
+counts_df <- lapply(fs, my_function) %>% 
+  bind_rows()
 
 ```
 
 * Calculate the CPM and count the number of genes with CPM > 1 for each sample.
 
 ```{r q3-cpm}
+cpm_answer <- counts_df %>%
+  group_by(sample) %>%
+  mutate(CPM = 1e6 * V2 / sum(V2)) %>%
+  summarise(n = sum(CPM > 1))
 
 ```
 
 * Transform the long count data frame into a wide count matrix with genes as `rownames()` and samples as `colnames()`. Include only genes in rows 10 to 15.
 
 ```{r q3-wide}
+
+thick_df <- counts_df %>%
+  pivot_wider(names_from = sample, values_from = V2) %>%
+  column_to_rownames("V1") %>%
+  dplyr::slice(10:15)
+
 
 ```
