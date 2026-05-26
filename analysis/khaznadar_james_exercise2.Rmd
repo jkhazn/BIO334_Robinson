@@ -106,7 +106,7 @@ experiments_clean <- experiments_clean %>%
 ```{r q2-summary}
 experiment_summary <- experiments_clean %>%
   group_by(manipulation) %>%
-  summarise(mean_v = mean(volume, na.rm = TRUE), min_v = min(volume, na.rm = TRUE), max_v = max(volume, na.rm = TRUE)) %>%
+  summarise(mean_v = mean(volume), min_v = min(volume), max_v = max(volume)) %>%
   arrange((mean_v))
 
 ```
