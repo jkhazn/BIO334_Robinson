@@ -521,15 +521,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjkhaznBIO334Robinsontree0d642c481d115a23ce39b56d693c89d322a830c1targetblank0d642c4a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjkhaznBIO334Robinsontreede2fad6bdd304060f897de0701269b508c11c9e8targetblankde2fad6a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/jkhazn/BIO334_Robinson/tree/0d642c481d115a23ce39b56d693c89d322a830c1" target="_blank">0d642c4</a>
+<a href="https://github.com/jkhazn/BIO334_Robinson/tree/de2fad6bdd304060f897de0701269b508c11c9e8" target="_blank">de2fad6</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomjkhaznBIO334Robinsontree0d642c481d115a23ce39b56d693c89d322a830c1targetblank0d642c4a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomjkhaznBIO334Robinsontreede2fad6bdd304060f897de0701269b508c11c9e8targetblankde2fad6a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -539,7 +539,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/jkhazn/BIO334_Robinson/tree/0d642c481d115a23ce39b56d693c89d322a830c1" target="_blank">0d642c4</a>.
+<a href="https://github.com/jkhazn/BIO334_Robinson/tree/de2fad6bdd304060f897de0701269b508c11c9e8" target="_blank">de2fad6</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -565,17 +565,12 @@ Ignored files:
 Untracked files:
     Untracked:  airway_subset.rdata
     Untracked:  analysis/human_protein_lengths.txt
-    Untracked:  data/airway_subset.rdata
-    Untracked:  data/files_for_ex1/
-    Untracked:  data/human_proteome.fa.gz
     Untracked:  exercise4_single_cell.html
     Untracked:  output/human_protein_lengths.txt
 
 Unstaged changes:
     Modified:   .Rprofile
     Modified:   BIO334_Robinson.Rproj
-    Modified:   analysis/khaznadar_james_exercise1.Rmd
-    Modified:   analysis/khaznadar_james_exercise3.Rmd
 
 </code></pre>
 <p>
@@ -621,6 +616,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jkhazn/BIO334_Robinson/3a1f0432fd359bacf1aae3c9bfe9d4eb584d6450/docs/khaznadar_james_exercise4.html" target="_blank">3a1f043</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-27
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -692,8 +704,8 @@ colnames(sce_com) &lt;- rownames(colData(sce_com)) &lt;- paste0(sce_com$technolo
 rm(sce_list, tenx, drop_seq, cel_seq)
 gc()</code></pre>
 <pre><code>           used  (Mb) gc trigger  (Mb) limit (Mb)  max used  (Mb)
-Ncells 11246401 600.7   16819597 898.3         NA  14299590 763.7
-Vcells 48340493 368.9  119597306 912.5      16384 118715872 905.8</code></pre>
+Ncells 11246682 600.7   16819838 898.3         NA  14299871 763.7
+Vcells 48341123 368.9  119598213 912.5      16384 118716502 905.8</code></pre>
 </div>
 <div id="combined-dataset" class="section level2">
 <h2>Combined Dataset</h2>
@@ -721,8 +733,82 @@ sce_com &lt;- runUmap.se(sce_com, num.dim = 2, num.threads = nthreads)</code></p
 Which technologies are most similar?</p>
 <pre class="r"><code>plotUMAP(sce_com, colour_by = &quot;technology&quot;)</code></pre>
 <p><img src="figure/khaznadar_james_exercise4.Rmd/q1-batch-1.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-q1-batch-1">
+Past versions of q1-batch-1.png
+</button>
+</p>
+<div id="fig-q1-batch-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/3a1f0432fd359bacf1aae3c9bfe9d4eb584d6450/docs/figure/khaznadar_james_exercise4.Rmd/q1-batch-1.png" target="_blank">3a1f043</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-27
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>plotUMAP(sce_com, colour_by = &quot;cell_line&quot;)</code></pre>
 <p><img src="figure/khaznadar_james_exercise4.Rmd/q1-batch-2.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-q1-batch-2">
+Past versions of q1-batch-2.png
+</button>
+</p>
+<div id="fig-q1-batch-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/3a1f0432fd359bacf1aae3c9bfe9d4eb584d6450/docs/figure/khaznadar_james_exercise4.Rmd/q1-batch-2.png" target="_blank">3a1f043</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-27
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Yes, there is a batch effect. CELseq clusters separately, 10x and
 Drop-seq are most similar.</p>
 </div>
@@ -735,8 +821,82 @@ sce_com$cluster &lt;- factor(sce_com$cluster)
 
 plotUMAP(sce_com, colour_by = &quot;cluster&quot;)</code></pre>
 <p><img src="figure/khaznadar_james_exercise4.Rmd/q2-cluster-1.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-q2-cluster-1">
+Past versions of q2-cluster-1.png
+</button>
+</p>
+<div id="fig-q2-cluster-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/3a1f0432fd359bacf1aae3c9bfe9d4eb584d6450/docs/figure/khaznadar_james_exercise4.Rmd/q2-cluster-1.png" target="_blank">3a1f043</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-27
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>plotUMAP(sce_com, colour_by = &quot;cell_line&quot;)</code></pre>
 <p><img src="figure/khaznadar_james_exercise4.Rmd/q2-cluster-2.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-q2-cluster-2">
+Past versions of q2-cluster-2.png
+</button>
+</p>
+<div id="fig-q2-cluster-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/3a1f0432fd359bacf1aae3c9bfe9d4eb584d6450/docs/figure/khaznadar_james_exercise4.Rmd/q2-cluster-2.png" target="_blank">3a1f043</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-27
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>table(sce_com$cluster, sce_com$cell_line)</code></pre>
 <pre><code>    
      H1975 H2228 HCC827
