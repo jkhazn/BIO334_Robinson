@@ -1,0 +1,105 @@
+---
+title: "Exercise 3: Plotting with ggplot2 + other useful packages"
+author: "James Khaznadar"
+date: "`r Sys.Date()`"
+output:
+  workflowr::wflow_html:
+    self_contained: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+library(workflowr)
+library(dplyr)
+library(RColorBrewer)
+library(ComplexHeatmap)
+library(ggplot2)
+library(cowplot)
+```
+
+## Question 1
+
+```{r load-gapminder}
+gapminder <- read_csv(file = "https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv")
+```
+
+```{r q1-plots}
+g1 <- ggplot(data = gapminder, aes(x = year, y = lifeExp, color = continent)) +
+  geom_point()
+
+g2 <- ggplot(data = gapminder) +
+  geom_point(aes(x = year, y = lifeExp, color = continent)) +
+  facet_wrap(~ continent, nrow = 1) +
+  theme(legend.position = "bottom")
+
+g3 <- ggplot(data = gapminder) +
+  geom_point(aes(x = year, y = lifeExp, color = continent), alpha = 0.2) +
+  facet_wrap(~ continent, nrow = 1) +
+  theme(legend.position = "bottom") +
+  geom_smooth(aes(x = year, y = lifeExp, colour = continent))
+
+g4 <- ggplot(data = gapminder) +
+  geom_point(aes(x = year, y = lifeExp, color = continent), alpha = 0.2) +
+  geom_point(data = . %>% filter(country == "Switzerland"), aes(x = year, y = lifeExp, colour = "Switzerland")) +
+  facet_wrap(~ continent, nrow = 1) +
+  theme(legend.position = "bottom") +
+  geom_smooth(aes(x = year, y = lifeExp, colour = continent))
+
+g5 <- ggplot(data = gapminder %>% filter(country %in% c('Australia', 'New Zealand'))) +
+  geom_label(aes(x = gdpPercap, y = lifeExp, label = year, colour = country)) +
+  facet_wrap(~ country, nrow = 1)
+
+plot_grid(g1, g3, labels = c("Bad", "Good"))
+g1
+g2
+g3
+g4
+g5
+```
+
+## Question 2
+
+```{r load-airway-subset}
+load(here::here("data", "airway_subset.rdata"))
+
+```
+
+How many samples are in gene_counts? How many genes are measured? How many samples per group?
+
+```{r q2-explore}
+ncol(gene_counts) 
+nrow(gene_counts)
+table(sample_info$group) 
+
+
+
+```
+
+Create a simple heatmap.
+
+```{r q2-heatmap}
+Heatmap(gene_counts)
+
+```
+
+Improve the heatmap — adjust gene name size, annotate samples, hide column dendrogram, use a color palette from `brewer.pal`.
+
+```{r q2-heatmap-improved}
+ha1 <- HeatmapAnnotation(group = sample_info$group)
+Heatmap(gene_counts,
+  name = "expression",
+  col = brewer.pal(5,name = 'PuRd'),
+  cluster_rows = TRUE,
+  cluster_columns = TRUE,
+  show_column_dend = FALSE,
+  row_names_gp = gpar(fontsize = 5),
+  top_annotation = ha1)
+```
+
+Do you see differences between groups? Provide at least one gene with different levels between groups.
+
+```{r q2-interpret}
+#There is a clear cluster, ENGSG00000125148 is expressed differentially between the treated and control groups
+
+```
