@@ -1,0 +1,144 @@
+---
+title: "Exercise 4: Single-cell RNA-seq"
+author: "James Khaznadar"
+date: "`r Sys.Date()`"
+output:
+  workflowr::wflow_html:
+    self_contained: true
+---
+
+> Full rendered version with plots: https://jkhazn.github.io/BIO334_Robinson/khaznadar_james_exercise4.html
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressPackageStartupMessages({
+  library(SingleCellExperiment)
+  library(scrapper)
+  library(scater)
+  library(CellBench)
+  library(ExperimentHub)
+  library(SingleR)
+  library(pheatmap)
+  library(ensembldb)
+  library(patchwork)
+  library(dplyr)
+})
+nthreads <- 2
+```
+
+## Getting Started
+
+How many cells do we have for each technology? How many genes? Where is the cell line information stored?
+
+```{r load-data}
+tenx     <- load_sc_data()[["sc_10x"]]
+cel_seq  <- load_sc_data()[["sc_celseq"]]
+drop_seq <- load_sc_data()[["sc_dropseq"]]
+```
+
+```{r explore}
+dim(tenx)
+dim(cel_seq)
+dim(drop_seq)
+
+head(tenx$cell_line)
+```
+
+## Merge Datasets
+
+What are potential drawbacks of merging by intersecting genes?
+
+```{r merge}
+sce_list <- list(tenx, drop_seq, cel_seq) %>%
+  set_names(c("tenx", "drop_seq", "celseq"))
+
+intersect_genes <- Reduce(intersect, lapply(sce_list, rownames))
+
+overlap_cols <- Reduce(intersect,
+  lapply(sce_list, function(u) names(colData(u))))
+
+sce_list <- lapply(sce_list, function(sce) {
+  sce_sub <- sce[intersect_genes, ]
+  colData(sce_sub) <- colData(sce)[, overlap_cols]
+  sce_sub
+})
+
+sce_com <- do.call(SingleCellExperiment::cbind, sce_list)
+
+sce_com$technology <- rep(names(sce_list), sapply(sce_list, ncol))
+
+colnames(sce_com) <- rownames(colData(sce_com)) <- paste0(sce_com$technology, "_", colnames(sce_com))
+
+rm(sce_list, tenx, drop_seq, cel_seq)
+gc()
+```
+
+## Combined Dataset
+
+How many cells and genes are left? Which assays are present? Where is the technology info?
+
+```{r explore-combined}
+dim(sce_com)
+assayNames(sce_com)
+head(sce_com$technology)
+```
+
+## Pre-processing
+
+```{r normalize}
+sce_com <- normalizeRnaCounts.se(sce_com)
+```
+
+```{r hvg}
+sce_com <- chooseRnaHvgs.se(sce_com, top = 1500, num.threads = nthreads)
+top.hvgs <- which(rowData(sce_com)$hvg)
+```
+
+```{r pca-umap}
+set.seed(00101)
+sce_com <- runPca.se(sce_com, features = top.hvgs, num.threads = nthreads)
+sce_com <- runUmap.se(sce_com, num.dim = 2, num.threads = nthreads)
+```
+
+## Question 1 — Batch Effect
+
+Do you find a batch effect caused by the different technologies? Which technologies are most similar?
+
+```{r q1-batch}
+plotUMAP(sce_com, colour_by = "technology")
+plotUMAP(sce_com, colour_by = "cell_line")
+```
+
+Yes, there is a batch effect. CELseq clusters separately, 10x and Drop-seq are most similar.
+
+## Question 2 — Clustering
+
+Do cells of different cell lines cluster separately?
+
+```{r q2-cluster}
+set.seed(00101)
+sce_com <- clusterGraph.se(sce_com, num.threads = nthreads, output.name = "cluster")
+sce_com$cluster <- factor(sce_com$cluster)
+
+plotUMAP(sce_com, colour_by = "cluster")
+plotUMAP(sce_com, colour_by = "cell_line")
+table(sce_com$cluster, sce_com$cell_line)
+```
+
+Yes, cells cluster by cell line as confirmed by the UMAP and table, but maybe change count of clusters, i would probably use a cluster size of 3 given the three cell lines to tell.
+
+## Question 3 — Marker Genes (optional)
+
+What are the marker genes for each cluster? How many markers do you find? Why do we only find so few markers for some clusters?
+
+```{r q3-markers}
+
+```
+
+## Question 4 — Cell Type Annotation (optional)
+
+Use a reference dataset from ExperimentHub to annotate the cells. Do you see a problem with the annotation?
+
+```{r q4-annotation}
+
+```
