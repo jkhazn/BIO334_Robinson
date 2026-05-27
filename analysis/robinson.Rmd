@@ -12,4 +12,10 @@ editor_options:
 library(reticulate)
 ```
 
-This block begins May 22 (afternoon). Analysis will be added here as work progresses.
+This block begins May 22 (afternoon).
+
+## Exercises
+
+- [Exercise 1: R Markdown, Automating Tasks, FASTA/FASTQ/String Processing](khaznadar_james_exercise1.html)
+- [Exercise 2: dplyr and tidyr for data frames](khaznadar_james_exercise2.html)
+- [Exercise 3: Plotting with ggplot2 + other useful packages](khaznadar_james_exercise3.html)
