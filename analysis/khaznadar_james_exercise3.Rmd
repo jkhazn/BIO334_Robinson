@@ -5,6 +5,7 @@ date: "`r Sys.Date()`"
 output:
   workflowr::wflow_html:
     self_contained: true
+
 ---
 
 ```{r setup, include=FALSE}
