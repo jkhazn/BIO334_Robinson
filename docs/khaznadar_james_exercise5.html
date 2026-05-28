@@ -522,15 +522,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjkhaznBIO334Robinsontree1630cfcfc3767813451c594e8251aa80a85c17f6targetblank1630cfca">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjkhaznBIO334Robinsontree46ec226e35775b4cce04ec156a7bbf96abd87235targetblank46ec226a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/jkhazn/BIO334_Robinson/tree/1630cfcfc3767813451c594e8251aa80a85c17f6" target="_blank">1630cfc</a>
+<a href="https://github.com/jkhazn/BIO334_Robinson/tree/46ec226e35775b4cce04ec156a7bbf96abd87235" target="_blank">46ec226</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomjkhaznBIO334Robinsontree1630cfcfc3767813451c594e8251aa80a85c17f6targetblank1630cfca"
+id="strongRepositoryversionstrongahrefhttpsgithubcomjkhaznBIO334Robinsontree46ec226e35775b4cce04ec156a7bbf96abd87235targetblank46ec226a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -540,7 +540,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/jkhazn/BIO334_Robinson/tree/1630cfcfc3767813451c594e8251aa80a85c17f6" target="_blank">1630cfc</a>.
+<a href="https://github.com/jkhazn/BIO334_Robinson/tree/46ec226e35775b4cce04ec156a7bbf96abd87235" target="_blank">46ec226</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -620,6 +620,23 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jkhazn/BIO334_Robinson/bafaaba9ca447befa70f4b88143353cf7da48a3c/docs/khaznadar_james_exercise5.html" target="_blank">bafaaba</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-28
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
@@ -686,6 +703,43 @@ ground truth spatial domains.</p>
 1353 3639 </code></pre>
 <pre class="r"><code>hist(spe$cell_count, breaks = 10)</code></pre>
 <p><img src="figure/khaznadar_james_exercise5.Rmd/q3-cells-per-spot-1.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-q3-cells-per-spot-1">
+Past versions of q3-cells-per-spot-1.png
+</button>
+</p>
+<div id="fig-q3-cells-per-spot-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/bafaaba9ca447befa70f4b88143353cf7da48a3c/docs/figure/khaznadar_james_exercise5.Rmd/q3-cells-per-spot-1.png" target="_blank">bafaaba</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>ggplot(data.frame(cell_count = spe$cell_count), aes(x = cell_count)) +
   geom_density() +
   xlab(&#39;Count&#39;) +
@@ -693,6 +747,43 @@ ground truth spatial domains.</p>
 <pre><code>Warning: Removed 1353 rows containing non-finite outside the scale range
 (`stat_density()`).</code></pre>
 <p><img src="figure/khaznadar_james_exercise5.Rmd/q3-cells-per-spot-2.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-q3-cells-per-spot-2">
+Past versions of q3-cells-per-spot-2.png
+</button>
+</p>
+<div id="fig-q3-cells-per-spot-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/bafaaba9ca447befa70f4b88143353cf7da48a3c/docs/figure/khaznadar_james_exercise5.Rmd/q3-cells-per-spot-2.png" target="_blank">bafaaba</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>data.frame(colData(spe), spatialCoords(spe)) |&gt;
   ggplot(aes(x = pxl_col_in_fullres, y = pxl_row_in_fullres, color = ground_truth)) +
   geom_point() +
@@ -701,6 +792,43 @@ ground truth spatial domains.</p>
   scale_color_discrete(na.value = &quot;white&quot;) +
   theme_void()</code></pre>
 <p><img src="figure/khaznadar_james_exercise5.Rmd/q4-ground-truth-1.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-q4-ground-truth-1">
+Past versions of q4-ground-truth-1.png
+</button>
+</p>
+<div id="fig-q4-ground-truth-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/bafaaba9ca447befa70f4b88143353cf7da48a3c/docs/figure/khaznadar_james_exercise5.Rmd/q4-ground-truth-1.png" target="_blank">bafaaba</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="filtering-and-qc" class="section level2">
 <h2>2.2 Filtering and QC</h2>
@@ -717,6 +845,43 @@ FALSE  TRUE
 <pre class="r"><code>plotColData(spe, x = &quot;detected&quot;, y = &quot;subset.proportion.MT&quot;,
             colour_by = &quot;keep&quot;) + scale_x_sqrt()</code></pre>
 <p><img src="figure/khaznadar_james_exercise5.Rmd/qc-1.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-qc-1">
+Past versions of qc-1.png
+</button>
+</p>
+<div id="fig-qc-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/bafaaba9ca447befa70f4b88143353cf7da48a3c/docs/figure/khaznadar_james_exercise5.Rmd/qc-1.png" target="_blank">bafaaba</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>data.frame(colData(spe), spatialCoords(spe)) |&gt;
   ggplot(aes(x = pxl_col_in_fullres, y = pxl_row_in_fullres, color = keep)) +
   geom_point() +
@@ -724,6 +889,43 @@ FALSE  TRUE
   scale_y_reverse() +
   theme_void()</code></pre>
 <p><img src="figure/khaznadar_james_exercise5.Rmd/qc-2.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-qc-2">
+Past versions of qc-2.png
+</button>
+</p>
+<div id="fig-qc-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/bafaaba9ca447befa70f4b88143353cf7da48a3c/docs/figure/khaznadar_james_exercise5.Rmd/qc-2.png" target="_blank">bafaaba</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>spe &lt;- spe[, colData(spe)$keep]
 spe &lt;- spe[rowSums(counts(spe)) &gt; 0, ]
 dim(spe)</code></pre>
@@ -739,6 +941,43 @@ distinct?</p>
 <pre><code>using unknown matrix fallback for &#39;dgTMatrix&#39;</code></pre>
 <pre class="r"><code>plot(rowData(spe)$means, rowData(spe)$variances, col=factor(rowData(spe)$hvg))</code></pre>
 <p><img src="figure/khaznadar_james_exercise5.Rmd/hvg-pca-1.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-hvg-pca-1">
+Past versions of hvg-pca-1.png
+</button>
+</p>
+<div id="fig-hvg-pca-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/bafaaba9ca447befa70f4b88143353cf7da48a3c/docs/figure/khaznadar_james_exercise5.Rmd/hvg-pca-1.png" target="_blank">bafaaba</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>is.hvg &lt;- rowData(spe)$hvg    
 
 # Get the gene names:
@@ -762,6 +1001,43 @@ df |&gt;
   scale_y_reverse() +
   theme_void()</code></pre>
 <p><img src="figure/khaznadar_james_exercise5.Rmd/pcs-spatial-1.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-pcs-spatial-1">
+Past versions of pcs-spatial-1.png
+</button>
+</p>
+<div id="fig-pcs-spatial-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/bafaaba9ca447befa70f4b88143353cf7da48a3c/docs/figure/khaznadar_james_exercise5.Rmd/pcs-spatial-1.png" target="_blank">bafaaba</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Use Banksy for spatially-aware dimension reduction. Does it improve
 things? Slightly, the white matter is now clearly clustered together,
 with there being some other higher level structures visible which is
@@ -779,6 +1055,43 @@ data.frame(colData(spe), spatialCoords(spe)) |&gt;
   scale_color_manual(values = pals::brewer.set1(length(unique(spe$clusters)))) +
   scale_y_reverse()</code></pre>
 <p><img src="figure/khaznadar_james_exercise5.Rmd/banksy-1.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-banksy-1">
+Past versions of banksy-1.png
+</button>
+</p>
+<div id="fig-banksy-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/bafaaba9ca447befa70f4b88143353cf7da48a3c/docs/figure/khaznadar_james_exercise5.Rmd/banksy-1.png" target="_blank">bafaaba</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="clustering-into-spatial-domains" class="section level2">
 <h2>2.4 Clustering into Spatial Domains</h2>
@@ -801,6 +1114,43 @@ data.frame(colData(spe), spatialCoords(spe)) |&gt;
   scale_color_manual(values = pals::brewer.set2(length(unique(spe$clust_M0_lam0.2_k50_res1)))) +
   scale_y_reverse()</code></pre>
 <p><img src="figure/khaznadar_james_exercise5.Rmd/cluster-1.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-cluster-1">
+Past versions of cluster-1.png
+</button>
+</p>
+<div id="fig-cluster-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/bafaaba9ca447befa70f4b88143353cf7da48a3c/docs/figure/khaznadar_james_exercise5.Rmd/cluster-1.png" target="_blank">bafaaba</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>library(mclust)</code></pre>
 <pre><code>Package &#39;mclust&#39; version 6.1.2
 Type &#39;citation(&quot;mclust&quot;)&#39; for citing this R package in publications.</code></pre>
@@ -824,6 +1174,43 @@ adjustedRandIndex(spe$ground_truth[idx], spe$clust_M0_lam0.2_k50_res1[idx])</cod
   theme_void() +
   ggtitle(&quot;Ground truth&quot;)</code></pre>
 <p><img src="figure/khaznadar_james_exercise5.Rmd/cluster-vs-truth-1.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-cluster-vs-truth-1">
+Past versions of cluster-vs-truth-1.png
+</button>
+</p>
+<div id="fig-cluster-vs-truth-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/bafaaba9ca447befa70f4b88143353cf7da48a3c/docs/figure/khaznadar_james_exercise5.Rmd/cluster-vs-truth-1.png" target="_blank">bafaaba</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>data.frame(colData(spe), spatialCoords(spe)) |&gt;
   ggplot(aes(x = pxl_col_in_fullres, y = pxl_row_in_fullres, color = clust_M0_lam0.2_k50_res1)) +
   geom_point() +
@@ -833,6 +1220,43 @@ adjustedRandIndex(spe$ground_truth[idx], spe$clust_M0_lam0.2_k50_res1[idx])</cod
   scale_color_manual(values = pals::brewer.set2(length(unique(spe$clust_M0_lam0.2_k50_res1)))) +
   ggtitle(&quot;Banksy clusters&quot;)</code></pre>
 <p><img src="figure/khaznadar_james_exercise5.Rmd/cluster-vs-truth-2.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-cluster-vs-truth-2">
+Past versions of cluster-vs-truth-2.png
+</button>
+</p>
+<div id="fig-cluster-vs-truth-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/bafaaba9ca447befa70f4b88143353cf7da48a3c/docs/figure/khaznadar_james_exercise5.Rmd/cluster-vs-truth-2.png" target="_blank">bafaaba</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="morans-i" class="section level2">
 <h2>2.5 Moran’s I</h2>
@@ -850,6 +1274,43 @@ sfe &lt;- runUnivariate(sfe, type = &quot;moran&quot;, features = test_genes,
 
 plotSpatialFeature(sfe, paper_ids, ncol = 3, maxcell = 5e4, swap_rownames = &quot;gene_name&quot;)</code></pre>
 <p><img src="figure/khaznadar_james_exercise5.Rmd/morans-i-1.png" alt="" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-morans-i-1">
+Past versions of morans-i-1.png
+</button>
+</p>
+<div id="fig-morans-i-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jkhazn/BIO334_Robinson/blob/bafaaba9ca447befa70f4b88143353cf7da48a3c/docs/figure/khaznadar_james_exercise5.Rmd/morans-i-1.png" target="_blank">bafaaba</a>
+</td>
+<td>
+jkhazn
+</td>
+<td>
+2026-05-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
