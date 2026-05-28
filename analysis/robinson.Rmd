@@ -20,3 +20,4 @@ This block begins May 22 (afternoon).
 - [Exercise 2: dplyr and tidyr for data frames](khaznadar_james_exercise2.html)
 - [Exercise 3: Plotting with ggplot2 + other useful packages](khaznadar_james_exercise3.html)
 - [Exercise 4: Single-cell RNA-seq](khaznadar_james_exercise4.html)
+- [Exercise 5: Introduction to Spatial Omics Data Analysis](khaznadar_james_exercise5.html)
