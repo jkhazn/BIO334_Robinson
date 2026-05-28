@@ -1,0 +1,216 @@
+---
+title: "Exercise 5: Introduction to Spatial Omics Data Analysis"
+author: "James Khaznadar"
+date: "`r Sys.Date()`"
+output:
+  workflowr::wflow_html:
+    self_contained: true
+---
+
+> Full rendered version with plots: https://jkhazn.github.io/BIO334_Robinson/khaznadar_james_exercise5.html
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(SpatialExperiment)
+library(STexampleData)
+library(ggplot2)
+library(dplyr)
+library(Voyager)
+library(scrapper)
+library(scater)
+library(BayesSpace)
+library(Banksy)
+library(tidyr)
+library(pals)
+library(scran)
+```
+
+## Load Data
+
+```{r load-data}
+spe <- Visium_humanDLPFC()
+spe
+```
+
+## 2.1 Exploring the Metadata
+
+How many genes and spots? How many genes have non-zero expression? How many spots are in tissue? Show distribution of cells per spot. Plot ground truth spatial domains.
+
+There are 33538 genes and 4992 spots.
+
+```{r q1-dims}
+dim(spe)
+sum(rowSums(counts(spe)) > 0)
+```
+
+
+Of the 4992 spots, 3639 are in tissue.
+```{r q2-in-tissue}
+table(spe$in_tissue)
+```
+
+```{r q3-cells-per-spot}
+
+hist(spe$cell_count, breaks = 10)
+ggplot(data.frame(cell_count = spe$cell_count), aes(x = cell_count)) +
+  geom_density() +
+  xlab('Count') +
+  ylab('Frequency')
+```
+
+```{r q4-ground-truth}
+data.frame(colData(spe), spatialCoords(spe)) |>
+  ggplot(aes(x = pxl_col_in_fullres, y = pxl_row_in_fullres, color = ground_truth)) +
+  geom_point() +
+  coord_equal() +
+  scale_y_reverse() +
+  scale_color_discrete(na.value = "white") +
+  theme_void()
+
+```
+
+## 2.2 Filtering and QC
+
+Explore QC metrics and apply reasonable filters.
+
+```{r qc}
+spe <- spe[, spe$in_tissue == 1]
+
+is_mito <- grepl("(^MT-)|(^mt-)", rowData(spe)$gene_name)
+table(is_mito)
+
+spe <- quickRnaQc.se(spe, subsets = list(MT = is_mito))
+
+plotColData(spe, x = "detected", y = "subset.proportion.MT",
+            colour_by = "keep") + scale_x_sqrt()
+
+data.frame(colData(spe), spatialCoords(spe)) |>
+  ggplot(aes(x = pxl_col_in_fullres, y = pxl_row_in_fullres, color = keep)) +
+  geom_point() +
+  coord_equal() +
+  scale_y_reverse() +
+  theme_void()
+```
+
+```{r filter}
+spe <- spe[, colData(spe)$keep]
+spe <- spe[rowSums(counts(spe)) > 0, ]
+dim(spe)
+```
+
+## 2.3 Normalization and Dimension Reduction
+
+Normalize, find HVGs, PCA. What layers of DLPFC are transcriptionally distinct?
+
+```{r normalize}
+spe <- normalizeRnaCounts.se(spe)
+```
+
+```{r hvg-pca}
+spe <- chooseRnaHvgs.se(spe, top = 2000)
+plot(rowData(spe)$means, rowData(spe)$variances, col=factor(rowData(spe)$hvg))
+is.hvg <- rowData(spe)$hvg    
+
+# Get the gene names:
+hvg.names <- rownames(spe)[is.hvg]
+length(hvg.names)
+```
+
+Plot the first, second and third PC in spatial context.
+
+```{r pcs-spatial}
+spe <- runPCA(spe, subset_row = hvg.names, ncomponents = 50)
+df <- data.frame(colData(spe), reducedDim(spe, "PCA"), spatialCoords(spe))
+#rename the colnames of the dataframe
+colnames(df) <- gsub("^X(\\d+)$", "PC\\1", colnames(df))
+df |>
+  dplyr::select(c(PC1:PC3, pxl_col_in_fullres, pxl_row_in_fullres)) |>
+  pivot_longer(PC1:PC3) |>
+  ggplot(aes(x = pxl_col_in_fullres, y = pxl_row_in_fullres, color = value)) +
+  geom_point(size = 0.5) +
+  facet_wrap( ~ name) +
+  coord_equal() + # to make x and y coordinates have the same spacing
+  scale_color_gradientn(colors = pals::parula()) + # custom color scale
+  scale_y_reverse() +
+  theme_void()
+```
+
+Use Banksy for spatially-aware dimension reduction. Does it improve things?
+Slightly, the white matter is now clearly clustered together, with there being some other higher level structures visible which is closer to the groud truth.
+
+```{r banksy}
+set.seed(123)
+# select number of neighbors for the shared nearest-neighbor graph
+num.neighbors <- 15
+# run the graph clustering
+spe <- clusterGraph.se(spe, num.neighbors=num.neighbors)
+data.frame(colData(spe), spatialCoords(spe)) |>
+  ggplot(aes(x = pxl_col_in_fullres, y = pxl_row_in_fullres, color = clusters)) +
+  geom_point() +
+  coord_equal() + # to make x and y coordinates have the same spacing
+  theme_void() +
+  scale_color_manual(values = pals::brewer.set1(length(unique(spe$clusters)))) +
+  scale_y_reverse()
+```
+
+## 2.4 Clustering into Spatial Domains
+
+Apply spatially-aware clustering, compare to ground truth with ARI, plot side by side.
+
+```{r cluster}
+set.seed(123)
+spe <- computeBanksy(spe, assay_name = "logcounts")
+spe <- runBanksyPCA(spe)
+spe <- clusterBanksy(spe)
+data.frame(colData(spe), spatialCoords(spe)) |>
+  ggplot(aes(x = pxl_col_in_fullres, y = pxl_row_in_fullres, color = clust_M0_lam0.2_k50_res1)) +
+  geom_point() +
+  coord_equal() +
+  theme_void() +
+  scale_color_manual(values = pals::brewer.set2(length(unique(spe$clust_M0_lam0.2_k50_res1)))) +
+  scale_y_reverse()
+```
+
+```{r ari}
+library(mclust)
+idx <- !is.na(spe$ground_truth)
+adjustedRandIndex(spe$ground_truth[idx], spe$clust_M0_lam0.2_k50_res1[idx])
+```
+
+```{r cluster-vs-truth}
+data.frame(colData(spe), spatialCoords(spe)) |>
+  ggplot(aes(x = pxl_col_in_fullres, y = pxl_row_in_fullres, color = ground_truth)) +
+  geom_point() +
+  coord_equal() +
+  scale_y_reverse() +
+  scale_color_discrete(na.value = "grey80") +
+  theme_void() +
+  ggtitle("Ground truth")
+
+data.frame(colData(spe), spatialCoords(spe)) |>
+  ggplot(aes(x = pxl_col_in_fullres, y = pxl_row_in_fullres, color = clust_M0_lam0.2_k50_res1)) +
+  geom_point() +
+  coord_equal() +
+  scale_y_reverse() +
+  theme_void() +
+  scale_color_manual(values = pals::brewer.set2(length(unique(spe$clust_M0_lam0.2_k50_res1)))) +
+  ggtitle("Banksy clusters")
+```
+
+## 2.5 Moran's I
+
+Compute Moran's I for the 3 genes from the paper + 200 random HVGs. Plot and highlight the 3 genes.
+
+```{r morans-i}
+paper_genes <- c("MOBP", "PCP4", "SNAP25")
+paper_ids <- rownames(spe)[rowData(spe)$gene_name %in% paper_genes]
+set.seed(123)
+test_genes <- union(paper_ids, sample(hvg.names, 200))
+
+sfe <- toSpatialFeatureExperiment(spe)
+colGraph(sfe, "visium") <- findVisiumGraph(sfe, zero.policy = TRUE)
+sfe <- runUnivariate(sfe, type = "moran", features = test_genes,
+                     colGraphName = "visium", zero.policy = TRUE)
+
+plotSpatialFeature(sfe, paper_ids, ncol = 3, maxcell = 5e4, swap_rownames = "gene_name")
+```
