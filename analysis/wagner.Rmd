@@ -50,12 +50,12 @@ non_detrimental_effect = [i for i in list_of_fitness if i >= 0]
 
 
 
-'''plt.hist(list_of_fitness, bins=50)
+# AI: plot uncommented for exam preparation
+plt.hist(list_of_fitness, bins=50)
 plt.title('Histogram showing distribution of Fitness')
 plt.xlabel('Fitness')
 plt.ylabel('Count')
 plt.show()
-'''
 
 #Overall introducing mutations to this specific sequence has a mostly detrimental effect, with only 3.4% of mutations actually increasing fitness.
 ```
@@ -113,17 +113,15 @@ for i in graph.es:
 
 #Now check whether building the graph worked, for example by printing the DNA sequence of the source and target nodes of the first and last few edges
 
-
-
-'''for e in graph.es[:5]:
+# AI: edge verification loop and plots uncommented for exam preparation
+for e in graph.es[:5]:
     target = e.target
     source = e.source
     fitnessdiff = e['FitnessDiff']
     start = graph.vs[source]['Sequence']
     end = graph.vs[target]['Sequence']
 
-    print(start + ' -> ',end,fitnessdiff)
-'''
+    print(start + ' -> ', end, fitnessdiff)
 print(len(graph.vs))
 print(len(list_of_sequences))
 print(len(graph.es))
@@ -131,26 +129,22 @@ print(len(graph.es))
 
 
 
-'''
-plt.hist(, bins=50)
+plt.hist(graph.degree(), bins=50)
 plt.title('Histogram showing distribution of node degrees')
 plt.xlabel('Degrees')
 plt.ylabel('Count')
 plt.show()
-
-'''
 
 #out_degree = np.array(graph.degree(mode='out'))
 #print((out_degree<18).sum()/72112)
 
 
 
-'''plt.hist(graph.es["FitnessDiff"], bins=50)
-plt.title('Histogram showing distribution of node degrees')
-plt.xlabel('Degrees')
+plt.hist(graph.es["FitnessDiff"], bins=50)
+plt.title('Histogram showing distribution of fitness differences')
+plt.xlabel('Fitness difference')
 plt.ylabel('Count')
 plt.show()
-'''
 ```
 
 ## Peak Detection
@@ -197,18 +191,15 @@ peak_dic = find_peaks(graph)
 ## Pairwise Hamming Distances — Peaks vs Random Sample
 
 ```{python hamming}
-'''
-
+# AI: peak fitness histogram and Hamming distance comparison plot uncommented for exam preparation
 peak_values = [i for i in peak_dic.values()]
-
 print((np.array(peak_values)>0).sum())
 
-
 plt.hist(peak_values, bins=50)
-plt.title('Histogram showing distribution of node degrees')
-plt.xlabel('Degrees')
+plt.title('Histogram showing distribution of peak fitness values')
+plt.xlabel('Fitness')
 plt.ylabel('Count')
-plt.show()'''
+plt.show()
 lst_hamdist = []
 for key, value in peak_dic.items():
     for key2, value2 in peak_dic.items():
@@ -226,14 +217,13 @@ for key in ransample:
             lst_ran_ham.append(hamdist(key, key2))
 
 print(len(peak_ham), len(lst_ran_ham))  # both should be 4656
-'''
 plt.hist(peak_ham, bins=range(1, 8), alpha=0.5, label='Peaks', color='red')
 plt.hist(lst_ran_ham, bins=range(1, 8), alpha=0.5, label='Random sample', color='blue')
 plt.title('Pairwise Hamming distance: peaks vs random sample')
 plt.xlabel('Hamming distance')
 plt.ylabel('Count')
 plt.legend()
-#plt.show()'''
+plt.show()
 
 #import scipy.stats as st
 #stat, p = st.mannwhitneyu(peak_ham, lst_ran_ham)
@@ -246,7 +236,8 @@ plt.legend()
 Greedy uphill random walk from low-fitness starting points; repeated 1000 times.
 Set `eval=TRUE` to render (takes ~60 s and prints one line per walk).
 
-```{python random-walk, eval=FALSE, results='hide'}
+```{python random-walk, results='hide'}
+# AI: random walk enabled (was eval=FALSE) for exam preparation
 F10 = min(list_of_fitness) + (max(list_of_fitness) - min(list_of_fitness)) * 0.1
 lowest_fitnesses = [seq for seq, fit in dictionary.items() if fit < F10]
 
